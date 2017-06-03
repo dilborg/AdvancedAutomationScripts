@@ -1,0 +1,102 @@
+JSON Naming convention notes:
+
+1. Directory naming:
+  - Directory: PoGo\PBN-JSONs
+    -- Main repository for 'global' JSONs
+  - Varialbe: SET jsnDir=%myPogoDir%\PBN-JSONs\
+
+REM Set target JSON - normally will be ninja.json
+REM TODO: soft code the JSON file
+
+
+
+2. JSON File Manager
+Variables:
+  - currentJSON : most currently used JSON
+	-- track using CSV
+	-- SET currentJSON=ninja.json
+	-- Eventually want to make this equal myDrone.json
+	-- SET gymJSON=%myDrone%GymStrat.json
+  - droneJSON 
+	-- DroneXXXX.json
+  - targetJSON : JSON being read 
+	-- JSON extract/merge functions
+  - destJSON : JSON being written
+  -- JSON extract/merge functions
+  --
+  
+Goal:
+  - DroneXXXX.json 
+	-> used to launch regular activity
+	-> contains "complete" history
+	-> backed up each change
+	-> where typical game activity is saved
+  - DroneXXXXPBN3 -> most recent extract 
+	-> DroneXXXXPBN3a - should not change much
+	-> DroneXXXXPBN3a - should be used for quick merges ie snipe/gym
+  - DroneXXXXGymStrat.json
+	-- No pokestop/no catching / no history
+	-- No coordinates - open using coordinates IE CSV
+  - Sniper
+	-- DroneXXXXSniper.json
+	-- SET sniperJSON=%myDrone%Sniper.json
+ 
+LOCATION:
+	- USE three letter (NYC) 
+	- Refer to Airport?
+
+3. New Sample create, extract from existing Drone JSON
+- Select JSON to use from Drones
+- Give it a name based on Activity/Level/Matrix/Settings/Level
+	- IE:  GymStrat 
+
+- Copy this JSON to the Sample JSON directory
+   - give it a version number (date/time)  ** NAMING CONVENTION:
+   Optional (xxx out the important fields)
+
+??  Pare down Sample to PBN1-PBN5
+NAMING CONVENTION:  PBN / X / activity, location, path / version(date) / .json 
+   
+-Samples
+	-PBN1ninja
+	-PBN2user
+	-DroneXXXXPBN3a.json
+	-PBN4activity
+	-PBN5path
+
+Process:
+	-  CurrentJSON ->  Extract U/N -> Device -> Keep -> LC
+	- Overwrite next JSON - Replace selected items . . .
+	- Extract/Copy to each directory
+	
+NAMING CONVENTION:  DroneXXXX / activity, location, path / level, step / .json 
+	- IE:
+		DroneXXXXGymStrat.json
+		DroneXXXXOttawa25.json
+		DroneXXXXVegas20.json
+		
+	- Format
+		SET droneJSON = %myDrone%%activity%%step%.json
+		
+* Most recent JSON ??
+	- Use date/time/sort to know which JSON is CurrentJSON**
+
+	- Swap lines . . . done
+
+	- Run launcher with new JSON - activity . . .
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

@@ -1,0 +1,94 @@
+    "autoLogin": true,
+    "autoStart": false,    
+    "robpokestops": false,
+    "catchpokemons": false,
+    "snipeMaxDistanceKm": 10,
+    "snipeCooldown": 10,
+    "snipeRegular": true,
+    "snipeJumpMode": "JUMP_NEVER",
+    "snipeBerry": "USE_BEST",
+    "snipeAutoTransfer": false,
+    "snipeUseBest": true,
+    "snipeAllSimilar": false,
+    "snipeTargets": [
+        "BLISSEY",
+        "CHANSEY",
+        "LAPRAS",
+        "SNORLAX",
+        "DRATINI",
+        "LARVITAR",
+        "TYRANITAR",
+        "DRAGONITE"
+    ],
+    "speed": 1.500,  
+    "radius": 1.0,
+    "autodropEnabled": false,
+    "autodropDelay": 5,
+    "autodrop": {
+    "ITEM_POTION": 9,
+    "ITEM_PINAP_BERRY": 4,
+    "ITEM_NANAB_BERRY": 5,
+    "ITEM_MAX_POTION": 50,
+    "ITEM_POKE_BALL": 25,
+    "ITEM_GREAT_BALL": 34,
+    "ITEM_SUPER_POTION": 4,
+    "ITEM_MAX_REVIVE": 42,
+    "ITEM_HYPER_POTION": 15,
+    "ITEM_ULTRA_BALL": 100,
+    "ITEM_REVIVE": 10,
+    "ITEM_RAZZ_BERRY": 10
+    },   
+    "autoincubate": false,
+    "hatching": {
+        "KM2": {
+            "enabled": true,
+            "preferUnlimited": true,
+            "force": true,
+            "priority": 1
+        },
+        "KM5": {
+            "enabled": true,
+            "preferUnlimited": false,
+            "force": false,
+            "priority": 3
+        },
+        "KM10": {
+            "enabled": true,
+            "preferUnlimited": false,
+            "force": true,
+            "priority": 2
+        },
+        "neverUseLimited": false
+    },
+    "autopokemonsEnabled": false,
+    "autopokemons": {},   
+    "capture": {},
+    "nanabPinapConverted": false,
+    "autotransferEnabled": false,
+    "autotransfer": {
+        "andMode": true,
+        "enableOr": false,
+        "keepMin": 2,
+        "bestMode": false,
+        "bestMin": 2,
+        "bestCP": true,
+        "bestIV": false,
+        "bestLVL": false,
+        "bestIVxLVL": false,
+        "transferEggs": false
+        },
+    "killswitchEnabled": true,
+    "killswitch": {
+        "captchaSeen": true,
+        "newApiForced": true,
+        "newNinjabotReleased": true,
+        "levelMax": 30
+    },
+    "gym": {
+        "endless": true,
+        "autoUseLuckyEgg": true,
+        "attackOnlyFirst": false,
+        "attackFirstX": 1,
+        "silentTeleporting": true
+    },
+    "pokestop": {},

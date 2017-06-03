@@ -1,0 +1,9 @@
+  "map": {
+    "lng": 0.0,
+    "lat": 0.0,
+    "speed": 3.45,
+    "radius": 1.5,
+    "paths": [],
+    "googleAPI": "GOOGLEAPKEY"
+  }
+}

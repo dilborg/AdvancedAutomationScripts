@@ -1,0 +1,3250 @@
+  "autoLogin": true,
+  "autoStart": false,    
+  "robpokestops": true,
+  "catchpokemons": true,
+  "snipeMaxDistanceKm": 10,
+  "snipeMinIv": 90,
+  "snipeMaxIv": 100,
+  "snipeCooldown": 30,
+  "snipeRegular": true,
+  "snipeMinBalls": 5,
+  "snipeJumpMode": "JUMP_NEVER",
+  "snipeBerry": "USE_BEST",
+  "snipeAutoTransfer": false,
+  "snipeUseBest": true,
+  "snipeAllSimilar": false,
+  "snipeTargets": [
+    "BLISSEY",
+    "CHANSEY",
+    "TYRANITAR",
+    "PUPITAR",
+    "DRAGONITE"
+  ],
+  "autodropEnabled": true,
+  "autodropDelay": 4,
+  "autodrop": {
+    "ITEM_POKE_BALL": 25,
+    "ITEM_HYPER_POTION": 30,
+    "ITEM_RAZZ_BERRY": 10,
+    "ITEM_MAX_REVIVE": 75,
+    "ITEM_REVIVE": 25,
+    "ITEM_MAX_POTION": 50,
+    "ITEM_GREAT_BALL": 50,
+    "ITEM_SUPER_POTION": 0,
+    "ITEM_NANAB_BERRY": 5,
+    "ITEM_ULTRA_BALL": 100,
+    "ITEM_POTION": 0,
+    "ITEM_PINAP_BERRY": 10
+  }, 
+  "autoincubate": false,
+  "hatching": {
+    "KM2": {
+      "enabled": true,
+      "preferUnlimited": true,
+      "force": true,
+      "priority": 1
+    },
+    "KM5": {
+      "enabled": true,
+      "preferUnlimited": false,
+      "force": false,
+      "priority": 3
+    },
+    "KM10": {
+      "enabled": true,
+      "preferUnlimited": false,
+      "force": true,
+      "priority": 2
+    },
+    "neverUseLimited": false
+  },
+  "healing": {
+    "revives": [
+      "ITEM_REVIVE",
+      "ITEM_MAX_REVIVE"
+    ],
+    "potions": [
+      "ITEM_SUPER_POTION",
+      "ITEM_HYPER_POTION",
+      "ITEM_MAX_POTION",
+      "ITEM_POTION"        
+    ]
+  },
+  "autopokemonsEnabled": true,
+  "autopokemons": {
+    "SMEARGLE": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "PIDGEOTTO": {
+      "evolve": false,
+      "transfer": true,
+      "ignore": false,
+      "keep": false
+    },
+    "LEDYBA": {
+      "evolve": true,
+      "transfer": false,
+      "ignore": false,
+      "keep": false
+    },
+    "TYRANITAR": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "SPEAROW": {
+      "evolve": true,
+      "transfer": false,
+      "ignore": false,
+      "keep": false
+    },
+    "STEELIX": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "DITTO": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "PIDGEY": {
+      "evolve": true,
+      "transfer": false,
+      "ignore": false,
+      "keep": false
+    },
+    "MEWTWO": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "GYARADOS": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "PORYGON2": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "ARTICUNO": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "DROWZEE": {
+      "evolve": true,
+      "transfer": false,
+      "ignore": false,
+      "keep": false
+    },
+    "RHYDON": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "RATTATA": {
+      "evolve": true,
+      "transfer": false,
+      "ignore": false,
+      "keep": false
+    },
+    "WEEDLE": {
+      "evolve": true,
+      "transfer": false,
+      "ignore": false,
+      "keep": false
+    },
+    "SMOOCHUM": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "EKANS": {
+      "evolve": true,
+      "transfer": false,
+      "ignore": false,
+      "keep": false
+    },
+    "SWINUB": {
+      "evolve": true,
+      "transfer": false,
+      "ignore": false,
+      "keep": false
+    },
+    "CLEFFA": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "HOOTHOOT": {
+      "evolve": true,
+      "transfer": false,
+      "ignore": false,
+      "keep": false
+    },
+    "TYROGUE": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "SUNFLORA": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "DELIBIRD": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "TOGEPI": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "ZAPDOS": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "WOOPER": {
+      "evolve": true,
+      "transfer": false,
+      "ignore": false,
+      "keep": false
+    },
+    "ALAKAZAM": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "METAPOD": {
+      "evolve": false,
+      "transfer": true,
+      "ignore": false,
+      "keep": false
+    },
+    "KAKUNA": {
+      "evolve": false,
+      "transfer": true,
+      "ignore": false,
+      "keep": false
+    },
+    "LUGIA": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "BLISSEY": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "SENTRET": {
+      "evolve": true,
+      "transfer": false,
+      "ignore": false,
+      "keep": false
+    },
+    "ELEKID": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "FLAREON": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "EXEGGUTOR": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "ABRA": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "SCIZOR": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "CATERPIE": {
+      "evolve": true,
+      "transfer": false,
+      "ignore": false,
+      "keep": false
+    },
+    "UMBREON": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "ENTEI": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "IGGLYBUFF": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "SNORLAX": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "VAPOREON": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "SUICUNE": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "ESPEON": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "RAIKOU": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "KADABRA": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "KRABBY": {
+      "evolve": true,
+      "transfer": false,
+      "ignore": false,
+      "keep": false
+    },
+    "MAGBY": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "CELEBI": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "SPINARAK": {
+      "evolve": true,
+      "transfer": false,
+      "ignore": false,
+      "keep": false
+    },
+    "HERACROSS": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "PICHU": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "REMORAID": {
+      "evolve": true,
+      "transfer": false,
+      "ignore": false,
+      "keep": false
+    },
+    "MOLTRES": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "JOLTEON": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "UNOWN": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "MEW": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "DRAGONITE": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "HO_OH": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    },
+    "LAPRAS": {
+      "evolve": false,
+      "transfer": false,
+      "ignore": false,
+      "keep": true
+    }
+  },
+  "capture": {
+    "PILOSWINE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "CORSOLA": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "BUTTERFREE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "SPEAROW": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "PIDGEY": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "pinapBerryPreferred": true
+    },
+    "WOBBUFFET": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "BLASTOISE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "VULPIX": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "SHUCKLE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "GROWLITHE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "ODDISH": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "SUNKERN": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "RATTATA": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "MURKROW": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinIv": 95,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "TEDDIURSA": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "SKARMORY": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "QUILAVA": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "BELLOSSOM": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "QUAGSIRE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "BULBASAUR": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 800,
+      "ultraBallMinCp": 400,
+      "greatBallMinCp": 150,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "SUNFLORA": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "SQUIRTLE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 800,
+      "ultraBallMinCp": 400,
+      "greatBallMinCp": 150,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "FARFETCHD": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "DELIBIRD": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "ELECTRODE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "TOGEPI": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "WOOPER": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "CYNDAQUIL": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "LANTURN": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "LICKITUNG": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "TOGETIC": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "XATU": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "WARTORTLE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "SENTRET": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "GASTLY": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "MACHOP": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "HORSEA": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "ABRA": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "PHANPY": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "MAGCARGO": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "KABUTOPS": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "VILEPLUME": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "VAPOREON": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 150,
+      "razzBerryMinIv": 95,
+      "razzBerryStartingAttempt": 5,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "PINECO": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "NINETALES": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "WIGGLYTUFF": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "ESPEON": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "VENUSAUR": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "MAGBY": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "DUGTRIO": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "TYPHLOSION": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "VENOMOTH": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "HOUNDOUR": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "GOLBAT": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "SLUGMA": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "FERALIGATR": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "MILTANK": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "DODUO": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "DRAGONITE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "OMASTAR": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "VENONAT": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "STEELIX": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "AMPHAROS": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "DUNSPARCE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "MAROWAK": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "AIPOM": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "SNEASEL": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinIv": 95,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "CHINCHOU": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "LARVITAR": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "WEEDLE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "pinapBerryPreferred": true
+    },
+    "MARILL": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "RAICHU": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "KINGLER": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "GOLEM": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "PONYTA": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "CROCONAW": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "NIDOKING": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "POLITOED": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "TYROGUE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "NIDORAN_FEMALE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "DONPHAN": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "SUDOWOODO": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "ALAKAZAM": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "VICTREEBEL": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "POLIWRATH": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "MISDREAVUS": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinIv": 95,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "SEEL": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "LUGIA": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1,
+      "nanabBerryPreferred": true
+    },
+    "ELEKID": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "FLAREON": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "JUMPLUFF": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "OMANYTE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "AERODACTYL": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "SEADRA": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "HITMONLEE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "GOLDEEN": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "GLOOM": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "MAGNEMITE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "CHARIZARD": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "ultraBallMinIv": 95,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "IGGLYBUFF": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "SNORLAX": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "PRIMEAPE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "CUBONE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "SCYTHER": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "ARBOK": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "CELEBI": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1,
+      "nanabBerryPreferred": true
+    },
+    "IVYSAUR": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "ARIADOS": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "JYNX": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "NATU": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "DRAGONAIR": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "PICHU": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "BEEDRILL": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "RAPIDASH": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "RATICATE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "MAGNETON": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "CHANSEY": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "PINSIR": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "UNOWN": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "HITMONTOP": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "MEW": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "TOTODILE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "SEAKING": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "KINGDRA": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "NIDORAN_MALE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "HOUNDOOM": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "WEEPINBELL": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "MACHOKE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "SMEARGLE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "PARAS": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "LEDYBA": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "PIDGEOTTO": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "ARCANINE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "SLOWKING": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "TYRANITAR": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "GENGAR": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "MEWTWO": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "VOLTORB": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "CHIKORITA": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "RHYDON": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "MACHAMP": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "SHELLDER": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "LEDIAN": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "SMOOCHUM": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "SLOWPOKE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "HAUNTER": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "STARYU": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinIv": 95,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "EKANS": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "SANDSHREW": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "CLEFFA": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "GRANBULL": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "ELECTABUZZ": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "AZUMARILL": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "EXEGGCUTE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "KOFFING": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinIv": 95,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "FURRET": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "PIKACHU": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 800,
+      "ultraBallMinCp": 400,
+      "greatBallMinCp": 150,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "URSARING": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "MEGANIUM": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "METAPOD": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "CHARMELEON": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "ultraBallMinIv": 95,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "ONIX": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "KAKUNA": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "MAREEP": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "BLISSEY": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "CLEFAIRY": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "EXEGGUTOR": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "PERSIAN": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "SCIZOR": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "CATERPIE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "pinapBerryPreferred": true
+    },
+    "GIRAFARIG": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "MANKEY": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "PIDGEOT": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "SUICUNE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1,
+      "nanabBerryPreferred": true
+    },
+    "ZUBAT": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "POLIWHIRL": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "SPINARAK": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "WEEZING": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "HYPNO": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "EEVEE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "ultraBallMinIv": 95,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "TAUROS": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 900,
+      "greatBallMinCp": 500,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "MOLTRES": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "YANMA": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "CROBAT": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "GRIMER": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "CLOYSTER": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "KANGASKHAN": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "LAPRAS": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "ultraBallMinIv": 90,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "CLEFABLE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "SNUBBULL": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "STANTLER": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "HOPPIP": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "GEODUDE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "DITTO": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "NOCTOWL": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "MR_MIME": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "PARASECT": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "GOLDUCK": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "GYARADOS": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "PORYGON2": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "GLIGAR": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "NIDOQUEEN": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "ARTICUNO": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "KABUTO": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "DROWZEE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "STARMIE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "TENTACRUEL": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "FORRETRESS": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "SWINUB": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "HOOTHOOT": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "OCTILLERY": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "POLIWAG": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "ZAPDOS": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "MAGMAR": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "CHARMANDER": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 800,
+      "ultraBallMinCp": 400,
+      "ultraBallMinIv": 95,
+      "greatBallMinCp": 150,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "GRAVELER": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "PSYDUCK": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "PUPITAR": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "TANGELA": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "NIDORINA": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "TENTACOOL": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "QWILFISH": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "BELLSPROUT": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "DRATINI": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 800,
+      "ultraBallMinCp": 400,
+      "greatBallMinCp": 150,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    },
+    "NIDORINO": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "MUK": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "DODRIO": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "MANTINE": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "BAYLEEF": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "DIGLETT": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "UMBREON": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "ENTEI": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1,
+      "nanabBerryPreferred": true
+    },
+    "RHYHORN": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "SANDSLASH": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "MAGIKARP": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 800,
+      "ultraBallMinCp": 150,
+      "ultraBallMinIv": 95,
+      "greatBallMinCp": 100,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 2,
+      "pinapBerryPreferred": true
+    },
+    "RAIKOU": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1,
+      "nanabBerryPreferred": true
+    },
+    "FEAROW": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "KADABRA": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "KRABBY": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinIv": 95,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "DEWGONG": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "HERACROSS": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "SLOWBRO": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "REMORAID": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "JOLTEON": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "FLAAFFY": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "HITMONCHAN": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "JIGGLYPUFF": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "SKIPLOOM": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2,
+      "nanabBerryPreferred": true
+    },
+    "HO_OH": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1,
+      "nanabBerryPreferred": true
+    },
+    "MEOWTH": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 1200,
+      "ultraBallMinCp": 800,
+      "greatBallMinCp": 550,
+      "razzBerryMinCp": 200,
+      "razzBerryStartingAttempt": 2,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 200,
+      "nanabBerryStartingAttempt": 2
+    },
+    "PORYGON": {
+      "alwaysUseBest": false,
+      "masterBallMinCp": 400,
+      "ultraBallMinCp": 200,
+      "greatBallMinCp": 50,
+      "razzBerryMinCp": 50,
+      "razzBerryStartingAttempt": 1,
+      "razzBerryPreferred": true,
+      "nanabBerryMinCp": 50,
+      "nanabBerryStartingAttempt": 1
+    }
+  },
+  "nanabPinapConverted": false,
+  "autotransferEnabled": true,
+  "autotransfer": {
+    "underIv": 95,
+    "andMode": true,
+    "enableOr": false,
+    "keepMin": 0,
+    "bestMode": false,
+    "bestMin": 1,
+    "bestCP": false,
+    "bestIV": false,
+    "bestLVL": false,
+    "bestIVxLVL": true,
+    "transferEggs": false
+  },
+  "killswitchEnabled": true,
+  "killswitch": {
+    "pokestopsMax": 500,
+    "pokemonsMax": 350,
+    "runtimesecondsMax": 21600,
+    "distanceMax": 25.0,
+    "captchaSeen": true,
+    "newApiForced": true,
+    "newNinjabotReleased": true
+  },
+  "gym": {
+    "endless": true,
+    "autoUseLuckyEgg": false,
+    "attackOnlyFirst": false,
+    "attackFirstX": 1,
+    "silentTeleporting": true
+  },
+  "pokestop": {},

@@ -1,0 +1,89 @@
+  "autoLogin": false,
+  "autoStart": false,    
+  "robpokestops": false,
+  "catchpokemons": true,
+  "snipeMaxDistanceKm": 10,
+  "snipeCooldown": 30,
+  "snipeRegular": true,
+  "snipeJumpMode": "JUMP_NEVER",
+  "snipeBerry": "USE_BEST",
+  "snipeAutoTransfer": false,
+  "snipeUseBest": true,
+  "snipeAllSimilar": false,
+  "snipeTargets": [
+    "BLISSEY",
+    "CHANSEY",
+    "LAPRAS",
+    "SNORLAX",
+    "PUPITAR",
+    "LARVITAR",
+    "TYRANITAR",
+    "DRATINI",
+    "DRAGONITE"
+  ],
+  "autodropEnabled": false,
+  "autodropDelay": 10,
+  "autodrop": {
+    "ITEM_POKE_BALL": 325
+  }, 
+  "autoincubate": true,
+  "hatching": {
+    "KM2": {
+      "enabled": true,
+      "preferUnlimited": true,
+      "force": true,
+      "priority": 1
+    },
+    "KM5": {
+      "enabled": true,
+      "preferUnlimited": false,
+      "force": false,
+      "priority": 3
+    },
+    "KM10": {
+      "enabled": true,
+      "preferUnlimited": false,
+      "force": true,
+      "priority": 2
+    },
+    "neverUseLimited": false
+  },
+  "healing": {
+    "revives": [
+      "ITEM_REVIVE",
+      "ITEM_MAX_REVIVE"
+    ],
+    "potions": [
+      "ITEM_POTION",
+      "ITEM_SUPER_POTION",
+      "ITEM_HYPER_POTION",
+      "ITEM_MAX_POTION"
+    ]
+  },
+  "autopokemonsEnabled": true,
+  "autopokemons": {}, 
+  "capture": {},
+  "nanabPinapConverted": false,
+  "autotransferEnabled": false,
+  "autotransfer": {
+    "underIv": 95,
+    "andMode": true,
+    "enableOr": false,
+    "keepMin": 1,
+    "bestMode": true,
+    "bestMin": 1,
+    "bestCP": false,
+    "bestIV": false,
+    "bestLVL": false,
+    "bestIVxLVL": true,
+    "transferEggs": true
+  },
+    "killswitchEnabled": true,
+    "killswitch": {
+      "pokestopsMax": 2999,
+      "pokemonsMax": 2999,
+      "captchaSeen": true,
+      "newApiForced": true,
+      "newNinjabotReleased": true
+    },
+    "pokestop": {},

@@ -1,0 +1,304 @@
+  "autoLogin": true,
+  "autoStart": true,    
+  "robpokestops": true,
+  "catchpokemons": true,
+  "snipeMaxDistanceKm": 10,
+  "snipeCooldown": 300,
+  "snipeRegular": true,
+  "snipeJumpMode": "JUMP_NEVER",
+  "snipeBerry": "USE_BEST",
+  "snipeAutoTransfer": false,
+  "snipeUseBest": true,
+  "snipeAllSimilar": false,
+  "snipeTargets": [
+    "BLISSEY",
+    "CHANSEY",
+    "LAPRAS",
+    "SNORLAX",
+    "PUPITAR",
+    "LARVITAR",
+    "TYRANITAR",
+    "DRATINI",
+    "DRAGONITE"
+  ],
+  "autodropEnabled": true,
+  "autodropDelay": 10,
+  "autodrop": {
+    "ITEM_POTION": 5,
+    "ITEM_PINAP_BERRY": 5,
+    "ITEM_NANAB_BERRY": 5,
+    "ITEM_POKE_BALL": 75,
+    "ITEM_GREAT_BALL": 100,
+    "ITEM_SUPER_POTION": 5,
+    "ITEM_HYPER_POTION": 5,
+    "ITEM_ULTRA_BALL": 50,
+    "ITEM_REVIVE": 5,
+    "ITEM_RAZZ_BERRY": 15
+  }, 
+  "autoincubate": true,
+  "hatching": {
+    "KM2": {
+      "enabled": true,
+      "preferUnlimited": true,
+      "force": true,
+      "priority": 1
+    },
+    "KM5": {
+      "enabled": true,
+      "preferUnlimited": false,
+      "force": false,
+      "priority": 3
+    },
+    "KM10": {
+      "enabled": true,
+      "preferUnlimited": false,
+      "force": true,
+      "priority": 2
+    },
+    "neverUseLimited": false
+  },
+  "healing": {
+    "revives": [
+      "ITEM_REVIVE",
+      "ITEM_MAX_REVIVE"
+    ],
+    "potions": [
+      "ITEM_POTION",
+      "ITEM_SUPER_POTION",
+      "ITEM_HYPER_POTION",
+      "ITEM_MAX_POTION"
+    ]
+  },
+  "autopokemonsEnabled": true,
+  "autopokemons": {
+        "TYROGUE": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "CELEBI": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "ENTEI": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "DRAGONITE": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "HO_OH": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "ARTICUNO": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "DITTO": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "SMEARGLE": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "ALAKAZAM": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "MOLTRES": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "SNORLAX": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "ZAPDOS": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "LAPRAS": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "PICHU": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "TYRANITAR": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "SUICUNE": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "MAGBY": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "BLISSEY": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "ABRA": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "TOGEPI": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "MEWTWO": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "IGGLYBUFF": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "DELIBIRD": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "SMOOCHUM": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "GYARADOS": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "DRAGONAIR": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "RAIKOU": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "DRATINI": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "HAUNTER": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "ELEKID": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "CLEFFA": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "MEW": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "LUGIA": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        },
+        "KADABRA": {
+          "evolve": false,
+          "transfer": false,
+          "ignore": false,
+          "keep": true
+        }
+    },    
+  "capture": {},
+  "nanabPinapConverted": false,
+  "autotransferEnabled": true,
+  "autotransfer": {
+    "underIv": 95,
+    "andMode": true,
+    "enableOr": false,
+    "keepMin": 1,
+    "bestMode": true,
+    "bestMin": 1,
+    "bestCP": false,
+    "bestIV": false,
+    "bestLVL": false,
+    "bestIVxLVL": true,
+    "transferEggs": true
+  },
+    "killswitchEnabled": true,
+    "killswitch": {
+        "pokestopsMax": 2999,
+        "pokemonsMax": 2999,
+        "captchaSeen": true,
+        "newApiForced": true,
+        "newNinjabotReleased": true,
+        "levelMax": 30
+    },
+    "pokestop": {},
