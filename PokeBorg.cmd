@@ -1,28 +1,61 @@
-@setlocal enableextensions enabledelayedexpansion
 @ECHO off
+@setlocal enableextensions enabledelayedexpansion
 %~d0
 cd %~dp0
-ECHO %~dp0
-cls
 Title = PokeBorg Advanced Automation NinjaBotter
-REM =========================================
-REM  Email: dilborg@hotmail.com
-REM  http://pokebot.ninja/thread-4859.html
-REM =========================================
-REM Debug - 0 for debug
-SET debug=0
+:: =========================================
+:: Name     : PokeBorg.cmd
+:: Purpose  : Primary controller of Ninja bots
+:: Location : InstallHome\PokeBorg.cmd
+:: Author:   Lou Langelier
+:: Email: dilborg@hotmail.com
+:: https://github.com/dilborg/AdvancedAutomationScripts
+:: =========================================
+:: -- Version History --
+:: Revision:01.100-beta     May 12 2017 - initial version 100 bot manager
+::          02.101-beta     Jun 01 2017 - added support for CSV Import
+SET version=02.102-beta&REM Jun 03 2017 - installation and configurations support
 
-REM TEST for PB directory
-IF NOT EXIST PokeBorg\PBsettings.cmd GOTO NOBORG 
-CALL PokeBorg\PBsettings.cmd
-IF %debug%==0 CALL :TSTART
+:initVars
+REM -- Initialize local variables
+SET "situation=%~n0"
+REM DEBUG here :: Debug=0 - debug log / 1 for no debug / 2 for debug view
+SET debug=1
+IF %debug%==0 ECHO:db     Debug mode activated - Debug: %debug%
 
+:checkSettings
+REM -- TEST for PB LOG directory detect First Run
+IF NOT EXIST "PBN-LOGS" GOTO NOPOKEBORG 
+REM TODO add a test for Configuration such as Pokeborg.ini
+REM -- TEST for PB directory and settings
+IF NOT EXIST "PokeBorg\PokeBorg-settings.cmd" GOTO NEWPOKEBORG
+
+:initSettings
+REM -- Initialize the persistent variables from the storage
+CALL "PokeBorg\PokeBorg-settings.cmd"
+
+:initMain
 mode con: cols=%cols% lines=%lines%
+CLS
+COLOR %colour%
 
-REM Test first run, if yes, Call pbSetup.cmd
-if not exist %borgDir% GOTO 1STRUN
+IF %debug%==1 GOTO startBatch
+:logbatch
+(ECHO:
+ECHO: DATE            : %DATE%, %TIME%
+ECHO: Current CMD     : %situation%
+ECHO: Current func    : logBatch
+)>> "%log%" 
+GOTO startBatch
 
-REM Test for Mode 1-10 2-100 3-1000 
+:startBatch
+IF %debug%==0 CALL :T1 >> %log% 2>&1
+IF %debug%==0 CALL :TSTART >> %log% 2>&1
+
+REM -- TEST if Borg is created and ask to create if needed
+IF NOT EXIST %borgDir% GOTO NOPOKEBORG
+
+REM -- Test for Mode 1-10 2-100 3-1000 
 IF botMode==1 DO (
 	CALL :STBORG 0
 	GOTO PBN 
@@ -31,9 +64,10 @@ REM if botMode==3 SET Borg0 GOTO Borg
 REM if botMode==0 GOTO what
 
 :PBN
-IF %debug%==0 ECHO:db     Start of Command Console process
+REM -- Main Menu Display
+IF %debug%==0 ECHO: --Current func    : PBN >> %log% 
 Title = PokeBorg %myMatrix% Command Console
-cls
+CLS
 color %colour%
 ECHO:
 ECHO: Working Dir: %matrixDir%
@@ -61,6 +95,7 @@ ECHO: : %TAB%X - Exit %TAB%%TAB%%TAB%%TAB%%TAB%%TAB%%COL%
 ECHO: +========================== PRESS X TO EXIT ===========================+ 
 CHOICE /C RGSOJCBMDPX /M " Enter your selection:"
 SET C=%ERRORLEVEL%
+IF %debug%==0 ECHO:db     CC Selection: %C% >> %log% 
 IF %C% == 11 EXIT
 IF %C% == 10 GOTO mySettings
 IF %C% == 9 GOTO DRONE
@@ -72,14 +107,19 @@ IF %C% == 4 GOTO D1
 IF %C% == 3 GOTO launchSNIPER
 IF %C% == 2 GOTO launchGYM
 IF %C% == 1 GOTO Poke10Unit
+EXIT
 
 :D1
+REM -- Open Directory to Matrix 
+IF %debug%==0 ECHO: --Current func    : D1 >> %log% 
 REM Open directory at location of matrix
 start %matrixDir%
 GOTO PBN
 
-
 :A1
+REM -- Previous Matrix Drone Launcher
+IF %debug%==0 ECHO: --Current func    : A1 >> %log% 
+Title = PokeBorg %myMatrix% Command Console
 cls
 Title = PokeBorg %myMatrix% Bot Initiation
 :A1A
@@ -139,10 +179,13 @@ SET matrixDir=%borgDir%\%myMatrix%
 GOTO A1
 
 :B1
+REM -- Copy the JSON files from PokeBorg\JSON to each Drone Dir -- obsolete
+IF %debug%==0 ECHO: --Current func    : B1 >> %log% 
+Title = PokeBorg %myMatrix% JSON Update
+CLS
 REM TODO rename this to JSON reset . . . like new JSON import
 if not exist %matrixDir% GOTO NOMATRIX
-CLS
-Title = PokeBorg %myMatrix% JSON Update
+
 For /f "tokens=1-2 delims=/:" %%a in ("%TIME: =0%") do (SET myTime=%%a%%b)
 SET backupFilename=ninja-%DATE%_%myTime%.json
 
@@ -173,9 +216,11 @@ PAUSE
 GOTO PBN
 
 :C1
-if not exist %matrixDir% GOTO NOMATRIX
-CLS
+REM -- Copy the JAR files from PokeBorg\JAR to each Drone Dir -- obsolete
+IF %debug%==0 ECHO: --Current func    : C! >> %log% 
 Title = PokeBorg %myMatrix% Ninja Update
+CLS
+if not exist %matrixDir% GOTO NOMATRIX
 ECHO .....................................................
 ECHO .           %sndOrder% Loaded :  %myMatrix%              
 ECHO .  Are you certain you want to update Ninja Files?  
@@ -205,8 +250,13 @@ GOTO PBN
 
 :IMPORT FROM CSV FUNCTION
 :IMPORT
+REM -- IMPORT CSV username/pass in a PBN3 file to each Drone Dir
+IF %debug%==0 ECHO: --Current func    : IMPORT >> %log% 
 TITLE = PokeBorg CSV Import Function
-IF %debug%==0 ECHO:db     Start of new GYM process
+CLS
+ECHO:
+ECHO   Beginning CSV Import
+ECHO:
 
 REM TODO - collect the current activity / location from CSV - confirm with user
 SET activity=activity_00
@@ -217,25 +267,20 @@ REM SET targetJSON=%myDrone%%activity%.json
 SET targetJSON=ninja.json
 
 REM eventually want to autodetect the drone count start
-REM iMatrix should = 30
-IF %debug%==0 ECHO:db     iDrone : %iDrone%   (s/b 0)
-IF %debug%==0 ECHO:db     iMatrix: %iMatrix%   (s/b 30)
-IF %debug%==0 PAUSE
+IF %debug%==0 ECHO:db     iDrone : %iDrone%   (s/b 0) >> %log%
+IF %debug%==0 ECHO:db     iMatrix: %iMatrix%   (s/b X0) >> %log%
+IF %debug%==2 PAUSE
 
-REM Launch unitMode set to Normal
+REM Post Launch: unitMode set to Normal
 SET unitMode=1
 
 REM Create PBN3 and copy to directories
 SET importFile=%ptcDir%\%order%%borg%%matrix%%drone%.CSV
-
+REM SET dronePBN3=droneDir\PBN3myDrone.json - is set againg later
 SET newPBN3=%jsnDir%\PBN3droneXXX.json
-REM SET dronePBN3=droneDir\PBN3myDrone.json - is set later
 
-IF %debug%==0 CALL :TLOCAL
-
-ECHO:
-ECHO   Beginning CSV Import
-ECHO:
+IF %debug%==0 ECHO:db     importFile: %importFile% >> %log% 
+IF %debug%==0 CALL :TLOCAL >> %log%
 
 REM Go through each line in the import file
 FOR /F "tokens=1-2* delims=:" %%A IN (%importFile%) DO (
@@ -245,32 +290,38 @@ FOR /F "tokens=1-2* delims=:" %%A IN (%importFile%) DO (
  )
 
 ECHO:
-ECHO   Completed CSV Read
+ECHO:   Completed CSV Read
+ECHO: Created Account JSON file for each %trdOrder%
+ECHO: Proceeding to build the full ninja. json
 ECHO:
 PAUSE
 
-REM - Run merge
+REM eventually want to autodetect the drone count start
+REM - Reset the drone count and Merge PBN1,2,3,4,5
+SET iDrone=0
 SET drone=0
 SET myDrone=%trdOrder%-%borg%%matrix%%drone%
 SET droneDir=%matrixDir%\%myDrone%
+IF %debug%==0 ECHO:db     iDrone  : %iDrone% >> %log%
 
 REM CALL JSON FUNCTION
 CALL :NewJSON
-ECHO END OF MERGE INSIDE IMPORT
+ECHO End of Import Function: Returning to Command Console
 PAUSE
 GOTO PBN
 
 :IMPORTREPL
+IF %debug%==0 ECHO: --     Start of IMPORTREPL process >> %log% 
 REM Begin the replace process for individual drone
 SET drone=%iDrone%
-IF %debug%==0 ECHO: && ECHO:db    drone: %drone%
 SET myDrone=%trdOrder%-%borg%%matrix%%drone%
-IF %debug%==0 ECHO:db    myDrone: %myDrone%
 SET droneDir=%matrixDir%\%myDrone%
-IF %debug%==0 ECHO:db    matrixDir: %matrixDir%
-IF %debug%==0 ECHO:db     iMatrix: %iMatrix%
+IF %debug%==0 ECHO: && ECHO:db    drone: %drone% >> %log% 
+IF %debug%==0 ECHO:db    myDrone: %myDrone% >> %log% 
+IF %debug%==0 ECHO:db    matrixDir: %matrixDir% >> %log% 
+IF %debug%==0 ECHO:db     iDrone: %iDrone% >> %log% 
 
-REM Display the data extracted about to be used
+REM Display the extracted data about to be used
 ECHO:
 ECHO Processing Account: %iDrone%
 ECHO   username: "%user%"
@@ -280,19 +331,21 @@ FOR /F %%a IN ('POWERSHELL -COMMAND "$([guid]::NewGuid().ToString())"') DO ( SET
 
 REM The JSON file to be created
 SET dronePBN3=%droneDir%\PBN3%myDrone%.json
-SET dronePBNa=%droneDir%\PBN3%myDrone%1.json
-SET dronePBNb=%droneDir%\PBN3%myDrone%2.json
-IF %debug%==0 ECHO:db     dronePBN3: %dronePBN3%
+SET dronePBNa=%droneDir%\PBN3%myDrone%a.json
+SET dronePBNb=%droneDir%\PBN3%myDrone%b.json
 
 REM Create new GUID
 set NEWGUID=%NEWGUID:-=%
 ECHO   New GUID: %NEWGUID%
+IF %debug%==0 ECHO:db New GUID: %NEWGUID% - username: "%user%" - password: "%pass%" >> %log%
 
 REM - > CALL jsonREPL %search% %replace% /M /F %source% /O %target%
 
-IF %debug%==0 ECHO:db     newPBN3  : %newPBN3%
-IF %debug%==0 ECHO:db     dronePBN3: %dronePBN3%
-REM IF %debug%==0 PAUSE
+IF %debug%==0 ECHO:db     newPBN3  : %newPBN3% >> %log% 
+IF %debug%==0 ECHO:db     dronePBN3: %dronePBN3% >> %log% 
+IF %debug%==0 ECHO:db    dronePBN3a: %dronePBN3a% >> %log% 
+IF %debug%==0 ECHO:db    dronePBN3b: %dronePBN3b% >> %log% 
+IF %debug%==2 PAUSE
 
 CALL jrepl.bat "\bPTCNAME\b" %%user%% /F %%newPBN3%% /O %%dronePBNa%%
 CALL jrepl.bat "\PTCPASS\b" %%pass%% /F %%dronePBNa%% /O %%dronePBNb%%
@@ -302,13 +355,13 @@ DEL %dronePBNa%
 DEL %dronePBNb%
 
 SET /a iDrone+=1
+IF %debug%==0 ECHO:db     iDrone  : %iDrone% >> %log% 
 
 GOTO :EOF
 
 : DRONE UNIT LAUNCHER FUNCTIONS
-
-:PRELAUNCH
-IF %debug%==0 ECHO:db     Begin PRELAUNCH process - display
+:PRELAUNCH 
+IF %debug%==0 ECHO:db     Begin PRELAUNCH process >> %log% 
 
 REM Target JSONs
 SET activityJSON=PBN4%activity%.json
@@ -330,7 +383,7 @@ ECHO:  - JSON    : %targetJSON%
 ECHO:  - UnitMode: %unitMode%
 ECHO:
 
-IF %debug%==0 CALL :TLOCAL
+IF %debug%==0 CALL :TLOCAL >> %log% 
 ECHO: PRESS ANY KEY to confirm these settings . . .
 PAUSE > NUL
 ECHO:
@@ -341,7 +394,7 @@ GOTO :EOF
 REM Test Bot launcher
 REM add /MIN
 REM add echo to a file .
-IF %debug%==0 ECHO:db     ECHO Starting bot %trdOrder%%order%%borg%%matrix%%drone%
+IF %debug%==0 ECHO:db     ECHO Starting bot %trdOrder%%order%%borg%%matrix%%drone% >> %log% 
 IF %debug%==0 START cmd /k %pbDir%\PokeBorgUnit.cmd %order% %borg% %matrix% %drone% %unitMode% %activity% %lat% %lng%
 IF %debug%==1 START /min cmd /c %pbDir%\PokeBorgUnit.cmd %order% %borg% %matrix% %drone% %unitMode% %activity% %lat% %lng%
 GOTO :eof
@@ -362,8 +415,8 @@ REM - TODO ask to cascade windows
 GOTO :eof
 
 :LAUNCHGYM
-IF %debug%==0 ECHO:db     Begin GYM process - gymstrat activity selected
-IF %debug%==0 PAUSE
+IF %debug%==0 ECHO:db     Begin GYM process - gymstrat activity selected >> %log% 
+IF %debug%==2 PAUSE
 
 REM Initiate Launch Variables for GYM
 SET unitMode=6
@@ -383,8 +436,8 @@ GOTO rerun
 EXIT
 
 :LAUNCHSNIPER
-IF %debug%==0 ECHO:db     Start of Sniper launch process
-IF %debug%==0 PAUSE
+IF %debug%==0 ECHO:db     Start of Sniper launch process >> %log% 
+IF %debug%==2 PAUSE
 
 REM TODO - collect the current activity / location from CSV - confirm with user
 SET activity=sniper
@@ -400,8 +453,8 @@ REM Modes 0-Test 1-Farm 2-Snipe 3-Maintain 5-New 6-Battle
 SET unitMode=2
 
 
-IF %debug%==0 CALL :TLOCAL
-IF %debug%==0 PAUSE
+IF %debug%==0 CALL :TLOCAL >> %log% 
+IF %debug%==2 PAUSE
 
 CALL :PRELAUNCH
 
@@ -503,7 +556,7 @@ CALL :extractHELPER
 CALL :NB0
 CALL :rewriteHELPER
 CALL :NB0
-CALL :postLAUNCHER
+CALL :launcherHELPER
 
 REM END OF EXTRACT
 ECHO: && ECHO Completed new user extract, rewrite and launch
@@ -523,8 +576,8 @@ GOTO :EOF
 
 :NewJSON
 REM Needs to have PNB3 updated recently
-IF %debug%==0 ECHO:db     Start of new JSON process
-IF %debug%==0 PAUSE
+IF %debug%==0 ECHO: --     Start of new JSON process >> %log% 
+IF %debug%==2 PAUSE
 
 REM - need to accept Variables
 REM Activity : 1
@@ -533,8 +586,7 @@ REM Test, etc
 
 REM TargetJSON definition
 REM HARD coded to ninja.json
-REM SET targetJSON=%myDrone%%activity%.json
-
+REM COULD BE SET targetJSON=%myDrone%%activity%.json
 SET targetJSON=ninja.json
 
 REM TODO - collect the current activity / location from CSV - confirm with user
@@ -547,14 +599,16 @@ REM MATRIX-19 ottawa activity_25
 REM Post UnitMore for test of NEW JSON file . . .
 SET unitMode=1
 
-IF %debug%==0 CALL :TLOCAL
-IF %debug%==0 CALL :T4
-IF %debug%==0 PAUSE
+IF %debug%==0 CALL :TLOCAL >> %log% 
+IF %debug%==0 CALL :T4 >> %log% 
+IF %debug%==2 PAUSE
 
 CALL :NJ0
+IF %debug%==0 ECHO: -- Calling reWriteHelper from NewJSON >> %log% 
 CALL :rewriteHELPER
 CALL :NJ0
-CALL :postLAUNCHER
+IF %debug%==0 ECHO: -- Calling launcherHelper from NewJSON >> %log% 
+CALL :launcherHELPER
 
 REM END OF new JSON
 ECHO: && ECHO Completed JSON rewrite and launch
@@ -572,8 +626,8 @@ ECHO:
 GOTO :EOF
 
 :NewGYM
-IF %debug%==0 ECHO:db     Start of new GYM process
-IF %debug%==0 PAUSE
+IF %debug%==0 ECHO:db     Start of new GYM process >> %log% 
+IF %debug%==2 PAUSE
 
 REM TODO - collect the current activity / location from CSV - confirm with user
 SET activity=gymstrat
@@ -589,7 +643,7 @@ SET unitMode=3
 CALL :NG0
 CALL :specwriteHELPER
 CALL :NG0
-CALL :postLAUNCHER
+CALL :launcherHELPER
 
 REM END OF GYM
 ECHO: && ECHO Completed GYM JSON rewrite and launch
@@ -607,7 +661,7 @@ ECHO:
 GOTO :EOF
 
 :NewSNIPER
-IF %debug%==0 ECHO:db     Start of new GYM process
+IF %debug%==0 ECHO:db     Start of new SNIPER process >> %log% 
 IF %debug%==0 PAUSE
 
 REM TODO - collect the current activity / location from CSV - confirm with user
@@ -628,7 +682,7 @@ SET unitMode=2
 CALL :NG0
 CALL :specwriteHELPER
 CALL :NG0
-CALL :postLAUNCHER
+CALL :launcherHELPER
 
 REM END OF EXTRACT
 ECHO: && ECHO Completed JSON rewrite and launch
@@ -725,7 +779,7 @@ start %matrixDir%
 PAUSE
 GOTO :EOF
 
-:launcherHELPER
+:launcherHELPERlauncherHELPER
 CALL :NB0
 ECHO: Step : Drone initiation - post merger
 ECHO: Warning! Do not skip this step.  Running the drones fixes the order 
@@ -780,14 +834,26 @@ IF %C% == 1 GOTO extractHELPER
 GOTO PBN
 
 :COLL
-ECHO: Eh, I haven't reached 1000 accounts yet. . . so stick with using 999
-PAUSE
+REM -- Order / Collection Selection Menu
+IF %debug%==0 ECHO: --Current func    : BORG >> %log% 
+Title = PokeBorg %fstOrder% Selection
+REM TODO Need to confirm the Collective and Borg assignments ie: order = '-' borg =0
+REM TODO - clean up the selection menus and add - option to collective
+ECHO: Eh, I haven't reached 1000 accounts yet. . . so stick with up to 999 bots
+choice /C 1234567890 /M "Select the %Order% to load:"
+SET O=%ERRORLEVEL%
+IF %O%==10 GOTO O10
+CALL :STCOLL %M%
+:O10
+IF %O%==10 CALL :STCOLL -
 GOTO PBN
 
 :BORG
+REM -- Borg Selection Menu
+IF %debug%==0 ECHO: --Current func    : BORG >> %log% 
 Title = PokeBorg %fstOrder% Selection
 cls
-color 7
+color %pickCLR%
 ECHO %myPogoDir%
 ECHO                      PokeBorg Advanced Automation NinjaBotter  
 ECHO ::::::::::::::::::::: PokeBorg %fstOrder%-%borg%00 - %borg%99  ::::::::::::::::::::::
@@ -806,25 +872,20 @@ ECHO ::      8 - Load/New %fstOrder%-8 (%trdOrder% 800-899)                     
 ECHO ::      9 - Load/New %fstOrder%-9 (%trdOrder% 900-999)                         ::
 ECHO ::                                                                  ::
 ECHO ::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::::
-choice /C 1234567890 /M "Select the %fstOrder% SET to load:"
-SET /a "B=%ERRORLEVEL%"
-IF %B%==10 SET borg=0
-IF %B%==1 SET borg=1
-IF %B%==2 SET borg=2
-IF %B%==3 SET borg=3
-IF %B%==4 SET borg=4
-IF %B%==5 SET borg=5
-IF %B%==6 SET borg=6
-IF %B%==7 SET borg=7
-IF %B%==8 SET borg=8
-IF %B%==9 SET borg=9
-CALL :STBORG %borg%
+choice /C 1234567890 /M "Select the %fstOrder% to load:"
+SET B=%ERRORLEVEL%
+IF %B%==10 GOTO B10
+CALL :STBORG %B%
+:B10
+IF %B%==10 CALL :STBORG 0
 GOTO PBN
 
 :MATRIX
+REM -- Borg Selection Menu
+IF %debug%==0 ECHO: --Current func    : MATRIX >> %log% 
 Title = PokeBorg Matrix Selection
 cls
-color 7
+color %pickCLR%
 REM Detect Date of JSON
 ECHO %borgDir%
 ECHO                      PokeBorg Advanced Automation NinjaBotter  
@@ -854,9 +915,11 @@ IF %M%==10 CALL :STMATRIX 0
 GOTO PBN
 
 :DRONE
+REM -- Borg Selection Menu
+IF %debug%==0 ECHO: --Current func    : DRONE >> %log% 
 Title = PokeBorg %sndOrder% Selection
 cls
-color 7
+color %pickCLR%
 ECHO %matrixDir%
 ECHO                      PokeBorg Advanced Automation NinjaBotter  
 ECHO ::::::::::::::::::::: PokeBorg %fstOrder%  %borg%%matrix%0 - %borg%%matrix%9  ::::::::::::::::::::::
@@ -884,96 +947,144 @@ CALL :STDRONE %D%
 IF %D%==10 CALL :STDRONE 0
 GOTO PBN
 
+:: -------------------------------
 :: POST SELECTION DRONE REASSIGNMENT
+:: -------------------------------
+
+:STCOLL
+REM -- SET Collective AKA Order - should not be required for some time
+IF %debug%==0 ECHO: --Current func    : STCOLL - %1 >> %log% 
+REM Need to set Order to '-' when less than 1k and then add a 0
+REM then if bots exceeds 9999, switch to hexidecimal for 65k max
+SET order=%1
+SET myOrder=%fstOrder%-%borg%
+SET /a iOrder=%borg%*100+%iMatrix%
+REM COLL DIR remains the same -> Pogo 
+CALL :STBORG 0
+GOTO :EOF
 
 :STBORG
-REM SET Borg
+REM -- SET Borg
+IF %debug%==0 ECHO: --Current func    : STBORG - %1 >> %log% 
 SET borg=%1
 SET myBorg=%fstOrder%-%borg%
 SET /a iBorg=%borg%*100+%iMatrix%
 SET borgDir=%collDir%\%myBorg%
-if not exist %borgDir% GOTO NEWBORG
+if not exist %borgDir% GOTO NOBORG
 CALL :STMATRIX 0
 GOTO :EOF
 
 :STMATRIX
-REM SET Matrix
+REM -- SET Matrix
+IF %debug%==0 ECHO: --Current func    : STMATRIX - %1 >> %log% 
 SET matrix=%1
 SET myMatrix=%sndOrder%-%borg%%matrix%
 SET /a iMatrix=%matrix%*10+%0%
 SET matrixDir=%borgDir%\%myMatrix%
-if not exist %matrixDir% GOTO NOMATRIX
+REM if not exist %matrixDir% GOTO NOMATRIX - this is a redundant directory test of BORG
 CALL :STDRONE 0
 GOTO :EOF
 
 :STDRONE
-REM SET Drone
+REM -- SET Drone
+IF %debug%==0 ECHO: --Current func    : STDRONE - %1 >> %log% 
 SET drone=%1
 SET myDrone=%trdOrder%-%borg%%matrix%%drone%
 SET /a iDrone=%drone%
 SET droneDir=%matrixDir%\%myDrone%
-if not exist %droneDir% GOTO NODRONE
+REM if not exist %droneDir% GOTO NODRONE - should really be testing for JSON 
 GOTO :EOF
 
-:: ERROR RESPONSE FUNCTIONS
-
-:SE1
-color 7
-ECHO ......................................
-ECHO . Do you want to run another script? .
-ECHO ......................................
-ECHO:
-ECHO Y - Yes
-ECHO N - No
-ECHO:
-choice /C YN /M "Enter Y to go back to the main menu or N to quit:"
-IF %ERRORLEVEL%==1 GOTO PBN
-IF %ERRORLEVEL%==2 exit
-
-REM END of activities
-PAUSE
-GOTO EOF
-
-:1STRUN
-REM Test for Setup file
-ECHO There are no %myBorg% directories yet.  
-ECHO A window will appear that will initiate the directory creation.
-PAUSE
-CALL :dirCreate
-GOTO PBN
-
-:dirCreate
-REM Test Call to start Creator
-START cmd /c %pbDir%\PBCreator.cmd %myOrder% %order% %fstOrder% %borg% %sndOrder% %matrix% %trdOrder% %drone%
-GOTO :EOF
+:: -------------------------------
+:: POST SELECTION DRONE TESTS
+:: -------------------------------
 
 :NOPOKEBORG
-REM Test for Setup file
-REM there is a problem with the unzip need to end and fix that
-ECHO NO PokeBORGDir or setup
+REM --  Detected missing POKEBORG subdirectory or settings
+ECHO: && ECHO: ERROR: Could not find the PokeBorg Settings
+ECHO: There may be a problem with the unzip process
+ECHO: Or perhaps the files are in a directory requiring permissions
+ECHO: You may need to download again or extract the files to another location
 GOTO NEWPOKEBORG
 
-:NEWPOKEBORG
-REM TODO - create new 1st run process
-ECHO: NEWPOKEBORG
-ECHO There is a problem with the unzip need to end and fix that
-ECHO For now sending you to WHAT
-PAUSE
-GOTO WHAT
-
 :NOBORG
-REM The Borg selected does not exist
-ECHO That %myBorg% directory selection does not exist yet
-ECHO A window will appear that will initiate the directory creation.
-PAUSE
-CALL :dirCreate
-GOTO PBN
+REM -- Detected the BORG directory does not exist ask to create new Borg
+IF %debug%==0 ECHO: --Current func    : NOBORG - %myBorg% >> %log% 
+ECHO: 
+ECHO: Selection: %myBorg% 
+ECHO: Could not find directory - %myBorg%
+choice /C YN /M "%TAB%Do you want the directories created?"
+IF %ERRORLEVEL%==2 GOTO PBN
+IF %ERRORLEVEL%==1 GOTO NEWBORG
+EXIT /B %ERRORLEVEL%
 
 :NOMATRIX
-REM Technically I don't test for the matrix creation, only matrix dir and that is a borg level problem
-REM The MATRIX selected does not exist
+REM --  Detected missing Matrix directory or empty Drone directory - need to import  
+IF %debug%==0 ECHO: --Current func    : NOMATRIX - %myMatrix% >> %log% 
+REM Should be doing a test before operations on Matrix for JSONs, then ask to import
+REM Before running operation - test each sub dire for JSON needed 
+REM The MATRIX selected does not exist - should ask to IMPORT
 ECHO That MATRIX selection does not exist.
 GOTO NEWMATRIX
+
+:NODRONE
+REM -- Detected missing JSON: PBN3 or activity or ninja JSON is missing 
+IF %debug%==0 ECHO: --Current func    : NODRONE - %myDrone% >> %log% 
+REM - if target JSON missing . . . to handle activity snipe and gym
+REM - IF exist ninja - 
+REM       - If detect PBN3 fails attempt to extract from ninja
+REM - IF exist PBN3
+REM        - If detect Ninja fails attempt to merge using PBN3
+ECHO: 
+ECHO: Selection: %myDrone% 
+ECHO: Could not find JSON - %targetJSON%
+choice /C YN /M "%TAB%Do you want the JSON created?"
+IF %ERRORLEVEL%==2 GOTO PBN
+IF %ERRORLEVEL%==1 GOTO NEWDRONE
+EXIT /B %ERRORLEVEL%
+
+:: -------------------------------
+:: POST DRONE TESTS NEW MAKE REDIRECTS
+:: -------------------------------
+
+:NEWPOKEBORG
+REM -- Function to call Assimilation function - detected missing LOGS
+REM TODO create installer response function
+ECHO: && ECHO: Could not find PokeBorg Program directories.
+ECHO: 
+choice /C YN /M ":     Would you like to install PokeBorg?"
+IF %ERRORLEVEL%==2 GOIO EOF
+IF %ERRORLEVEL%==1 ECHO Please wait . . . 
+REM Close this window and launch the Assimilator
+IF NOT EXIST PokeBorg-Assimilator.cmd CALL :getAssimilator
+START cmd /c PokeBorg-Assimilator.cmd
+EXIT /B %ERRORLEVEL% 
+
+:getAssimilator
+ECHO: 
+ECHO:--------------------Downloading PokeBorg--------------------
+ECHO: Please wait while PokeBorg is downloaded.
+ECHO: 
+curl -L https://github.com/dilborg/AdvancedAutomationScripts/raw/master/PokeBorg-Assimilator.cmd > PokeBorg-Assimilator.cmd
+ECHO: The PokeBorg Program Installer was downloaded.
+GOTO :EOF
+
+:NEWBORG
+REM -- Helper function which calls the BORG Directory Creator
+IF %debug%==0 ECHO: --Current func    : NEWPOKEBORG >> %log% 
+ECHO:     BORG Directory Creator:
+ECHO: This function will create the following directories:
+ECHO:   -- %myPogoDir%  %TAB%%TAB%%TAB%<- already exists
+ECHO:    *-- %myBorg%  %TAB%%TAB%%TAB%sub-directory
+ECHO:      *-- 10x %2ndOrder% %TAB%%TAB%subdirecties to %myBorg%
+ECHO:        *-- 10x %3rdOrder% %TAB%subdirecties to %2ndOrder%
+ECHO:
+ECHO: A window will appear that will initiate the directory creation.
+IF %debug%==0 ECHO:db%TAB%myPogoDir%TAB%: %myPogoDir% >> %log%
+IF %debug%==0 ECHO:db%TAB%myBorg%TAB%: %myBorg%  >> %log%
+PAUSE
+START cmd /c %pbDir%\PokeBorg-Rejenerator.cmd %myOrder% %order% %fstOrder% %borg% %sndOrder% %matrix% %trdOrder% %drone% ^1^>^> ^%log^% ^2^>^&^1
+GOTO :EOF
 
 :NEWMATRIX
 REM TODO test for actual first run of Matrix - ie if the Drone DIR is empty
@@ -983,16 +1094,11 @@ ECHO For now sending you to JSON option
 PAUSE
 GOTO JSMENU
 
-:NODRONE
-REM TODO test for actual first run of DRONE - ie if the Drone DIR is empty
-REM The DRONE JSON selected does not exist
-ECHO That DRONE selection does not exist.
-ECHO Create new drone? GOTO NEWDRONE YN
-GOTO NEWDRONE
-REM SHOULD BE A CALL, then send back to PBNCC
-
 :NEWDRONE
-REM This is extremely experimental . . .
+REM TODO This is extremely experimental . . .
+REM Possible function if user doesn't want to import
+REM Likely need several copies of this for activity based detection
+REM Also possible this could come up during batch processing - how to handle
 ECHO: 
 ECHO: The ninja.json doesn't exist.
 ECHO: Copy Starter JSON to this directory?
@@ -1012,8 +1118,32 @@ ECHO: Press any key to return to run again . . .
 PAUSE
 GOTO :EOF
 
+REM END of activities
+PAUSE
+GOTO EOF
+
+:: -------------------------------
+:: ERROR RESPONSE FUNCTIONS
+:: -------------------------------
+
+:SE1
+REM go back to menu or run next matrix ?
+ECHO ......................................
+ECHO . Do you want to run another script? .
+ECHO ......................................
+ECHO:
+ECHO Y - Yes
+ECHO N - No
+ECHO:
+choice /C YN /M "Enter Y to go back to the main menu or N to quit:"
+IF %ERRORLEVEL%==1 GOTO PBN
+IF %ERRORLEVEL%==2 exit
+
 :WHAT
-COLOR 74
+REM -- Error processing - error detected by interal testing
+IF %debug%==0 ECHO: --Current func    : WHAT >> %log% 
+IF %debug%==0 ECHO: --Previous Title  : %TITLE% >> %log% 
+COLOR %waitCLR%
 ECHO: *************************************
 ECHO: ****  BIOTECHNILOGICAL ERROR ********
 ECHO: *************************************
@@ -1025,15 +1155,20 @@ IF %ERRORLEVEL%==1 GOTO DIAG
 IF %ERRORLEVEL%==2 GOTO PBN
 
 :DIAG
+REM -- Diagnostics Display
+IF %debug%==0 ECHO: --Current func    : DIAG >> %log% 
 ECHO:     Error details . . .
 CALL :TSTART
+IF %debug%==0 CALL :START >> %log% 
 ECHO: Fix the communication array and come back: 
 choice /C YN /M "Enter Y to go back to the Command Console or N to quit:"
 IF %ERRORLEVEL%==1 GOTO PBN
 IF %ERRORLEVEL%==2 EXIT
 EXIT
 
+:: -------------------------------
 :: TESTING HELPER FUNCTIONS
+:: -------------------------------
 
 :TSTART
 REM TESTING START Print test series
@@ -1041,8 +1176,8 @@ CALL :T2
 CALL :T3
 CALL :T4
 CALL :TLOCAL
-choice /C YN /M "Turn ECHO on?"
-IF %ERRORLEVEL%==1 ECHO ON
+IF %debug%==2 choice /C YN /M "Turn ECHO on?"
+IF %debug%==2 IF %ERRORLEVEL%==1 ECHO ON
 goto :eof
 
 :T1

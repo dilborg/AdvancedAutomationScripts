@@ -2,7 +2,6 @@
 @setlocal enableextensions enabledelayedexpansion
 %~d0
 cd %~dp0
-
 :: =========================================
 :: Name     : PokeBorg-Assimilator.cmd
 :: Purpose  : Install Pokeborg helper files and create PokeBorg directories
@@ -54,7 +53,6 @@ SET ptcDir=%installPath%PBN-PTC
 REM -- Determine fileName variables
 FOR %%k in (%0) do SET batchName=%%~nk
 SET log=%batchname%.log
-SET pbCONFIG=%pbDir%\Pokeborg.ini
 
 :localChecks
 :displayChecks
