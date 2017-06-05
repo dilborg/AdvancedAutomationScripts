@@ -50,7 +50,7 @@ IF EXIST %log% GOTO logBatch
 	ECHO: PokeBorg VER    : %version%
 	ECHO: Current CMD     : %situation%
 	FOR /F "tokens=*" %%W IN ('VER') DO ECHO: Windows Version : %%W
-	FOR /F "tokens=*"  %%J in ('java -fullversion 2^>^&1') DO  ECHO: Java            : %%J
+	FOR /F "tokens=*" %%J IN ('java -fullversion 2^>^&1') DO ECHO: Java            : %%J
 	ECHO: DATE            : %DATE%, %TIME%
 	ECHO:=========================================================
 )>> "%log%"

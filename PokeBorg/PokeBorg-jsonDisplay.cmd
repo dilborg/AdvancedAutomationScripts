@@ -9,7 +9,7 @@ REM  Email: dilborg@hotmail.com
 REM  http://pokebot.ninja/thread-4859.html
 REM =========================================
 REM Probably not a good idea to change these settings
-CALL PBsettings.cmd
+CALL PokeBorg-settings.cmd
 
 REM Find out if paramaters sent 
 REM IF NO PARAMETERS . . .
@@ -26,7 +26,6 @@ ECHO. Displaying data from %~1
 ECHO.
 for /F "tokens=*" %%A in (%~1) do echo %%A
 ECHO. End of display
-PAUSE
 GOTO :EOF
 
 REM END of activities

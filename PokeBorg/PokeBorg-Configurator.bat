@@ -55,9 +55,12 @@ REM -- Determine fileName variables
 FOR %%k in (%0) do SET batchName=%%~nk
 SET log=%batchname%.log
 SET pbCONFIG=%pbDir%\Pokeborg.ini
+:: TargetJSON to change later
 SET targetJSON=ninja.json
 SET PBN1-ninja=%jsnDir%\PBN1-ninjaBot.json
 SET PBN2-user=%jsnDir%\PBN2-user.json
+SET destCSV=%jsnDir%\PBN1ninja.csv
+SET propKEY=%jsnDir%\PBN1ninja.key
 
 :localChecks
 :displayChecks
@@ -101,7 +104,7 @@ PAUSE
 
 :Warning
 IF %debug%==1 CLS
-IF NOT EXIST "%PBN1-ninja%" GOTO menuCreate
+IF NOT EXIST "%PBN2-user%" GOTO menuCreate
 color C
 ECHO.
 ECHO.
@@ -112,7 +115,7 @@ ECHO.===========================================================================
 ECHO.                                                                           
 ECHO.           WARNING - Your existing %PBN1-ninja%, %PBN2-user% and              
 ECHO.                                                                           
-ECHO.                    %pbCONFIG% will be overwriten.                        
+ECHO.                    %pbCONFIG% may be overwriten.                        
 ECHO.                                                                           
 ECHO.         Close this screen to abort or press any key to continue      
 ECHO.                                                                           
@@ -123,9 +126,40 @@ ECHO.
 color 9F
 GOTO menuCreate
 
+:menuCreate
+IF %debug%==1 CLS
+ECHO.
+ECHO.
+ECHO.--------------------PokeBorg Ninja/User JSON Creator--------------------
+ECHO: 
+ECHO. Step 1 - Extract Settings from existing JSON
+ECHO: 
+ECHO. Step 2 - Confirm extracted settings 
+ECHO: 
+ECHO. Step 3 - %PBN1-ninja% - write json 
+ECHO.
+ECHO. Step 4 - %PBN2-user%  - write json
+ECHO.
+ECHO: 
+ECHO. These steps should be completed in order.
+ECHO.
+:_choice
+SET _ok=
+SET /p _ok= Make your choice or press Enter to close: ||goto:eof
+IF "%_ok%" == "1" SET CHOICE=jsonpicker&GOTO jsonpicker
+IF "%_ok%" == "2" SET CHOICE=confirmProperties&GOTO confirmProperties
+IF "%_ok%" == "3" SET CHOICE=PBN1&GOTO PBN1
+IF "%_ok%" == "4" SET CHOICE=PBN2&GOTO PBN2
+
+GOTO :_choice 
+
+:step1 :: -- Extract Settings from existing JSON
 :jsonPicker
 REM -- Ask to scan an existing JSON
 IF %debug%==0 ECHO: -- Function:  jsonPicker
+ECHO.
+ECHO.
+ECHO.--------------------PokeBorg ninja.json extractor--------------------
 ECHO:
 ECHO: Please select an existing JSON:
 ECHO: 
@@ -135,15 +169,17 @@ REM TODO Parse the file directory name to short form
 SET "targetJSON=%ninjaFound%"
 IF %debug%==0 ECHO:db     targetJSON=%targetJSON%
 
+:: Using sample JSON, extract to PBN1-ninja.csv
 CALL :ninjaExtract
-
-REM assign values based on CSV
-
-:assignCSV
-ECHO: Assign values from CSV
-
-FOR /F "tokens=1-2 delims=:," %%A IN (%destJSON%) DO call :subAssignCSV %%A %%B
+CALL :assignFromCSV
+CALL :pbn1CSVSave
 GOTO menuCreate
+
+:assignFromCSV
+:: Assign values based on CSV and clean up values
+ECHO: Assign values from CSV
+FOR /F "tokens=1-2 delims=:," %%A IN (%destCSV%) DO call :subAssignCSV %%A %%B
+GOTO :eof
 
 :subAssignCSV
 	IF %debug%==0 ECHO:db     %1 , %2
@@ -157,7 +193,36 @@ GOTO menuCreate
 	SET v%propA%=%propB%
 GOTO :EOF
 
+:pbn1CSVSave
+:: Rewrite the PBN1-ninja CSV with cleaner values
+ECHO lang : %vlang% > %destCSV%
+ECHO donator : %vdonator% >> %destCSV%
+ECHO donatorcode : %vdonatorcode% >> %destCSV%
+ECHO verify : %vverify% >> %destCSV%
+ECHO hashLicense : %vhashLicense% >> %destCSV%
+ECHO googleAPI : %vgoogleAPI% >> %destCSV%
+GOTO :eof
+
+:pbn1CSVErr
+ECHO:
+ECHO: Please complete the JSON extraction step before continuing
+ECHO: 
+PAUSE
+GOTO PBN1
+
+:step2 :: -- Confirm extracted settings 
 :confirmProperties
+:: -- Confirm extracted settings
+::  Check for existing Ninja CSV extracted data
+IF %vlang% NOT EQ "" GOTO displayProperties
+IF %destCSV% NOT EXIST GOTO pbn1CSVErr
+:: Vars are not in state, loading from saved CSV
+CALL :assignFromCSV
+
+:assignFromCSV
+
+
+:displayProperties
 IF %debug%==1 CLS
 IF %debug%==0 ECHO:db   Using imported keys and values
 IF %debug%==0 ECHO:db      vlang : %vlang%
@@ -190,36 +255,46 @@ IF %debug%==0 ECHO:db     vdonatorcode %vdonatorcode%
 
 :vverify
 ECHO:   Confirm Ninja donator code : %vverify%
-SET /p newVerify="Press ENTER to confirm this value or submit a new value: "||GOTO vhashLicense
+SET /p newVerify="Press ENTER to confirm this value or submit a new value: "||GOTO vgoogleAPI
 SET vverify=%newVerify%
 IF %debug%==0 ECHO:db     vverify %vverify%
 
+:vgoogleAPI
+ECHO:   Confirm Google API : %vgoogleAPI%
+SET /p newGoogle="Press ENTER to confirm this value or submit a new value: "||GOTO vhashLicense
+SET vgoogleAPI=%newGoogle%
+IF %debug%==0 ECHO:db     vgoogleAPI %vgoogleAPI%
+
 :vhashLicense
 ECHO:   Confirm Bossland hashing license : %vhashLicense%
-SET /p newHash="Press ENTER to confirm this value or submit a new value: "||GOTO vRPM
+SET /p newHash="Press ENTER to confirm this value or submit a new value: "||GOTO optionalSettings
 SET vhashLicense=%newHash%
 IF %debug%==0 ECHO:db     vhashLicense %vhashLicense%
 
+:optionalSettings
+ECHO.
+ECHO.--------------------Optional additional Settings--------------------
+ECHO:
+
 :vRPM 
 REM Key RPM? 150/500/1000
-SET vRPM=150
-ECHO:   Confirm Bosslan Requests Per Minute : %vRPM%
-SET /p newRPM="Press ENTER to confirm this value or submit a new value: "||GOTO vgoogleAPI
-SET vRPM=%newRPM%
-IF %debug%==0 ECHO:db     vRPM %vRPM%
-
-:vgoogleAPI
-ECHO:   Confirm Google API : %vgoogleAPI%
-SET /p newGoogle="Press ENTER to confirm this value or submit a new value: "||GOTO homeLocation
-SET vgoogleAPI=%newGoogle%
-IF %debug%==0 ECHO:db     vgoogleAPI %vgoogleAPI%
+SET botMode=1
+ECHO:   In order to know maximum botting limits,
+ECHO:   Please confirm Bosslan Requests Per Minute (RPM):
+ECHO:       1 -  150 RPM
+ECHO:       2 -  500 RPM
+ECHO:       3 - 1000 RPM
+ choice /C 123 /M "Select your Bossland Key RPM:  "
+ IF %ERRORLEVEL%==3 myDelay=3
+ IF %ERRORLEVEL%==2 myDelay=2
+ IF %ERRORLEVEL%==1 myDelay=1
 
 :homeLocation
 Vegas - Strip // 36.112665, -115.173216
 SET vlat=36.112665
 SET vlng=-115.173216
 ECHO:   Confirm Home Location as Vegas : %vlat%, %vlng%
-SET /p newLat="Press ENTER to confirm this value or submit a new latitude: "||GOTO vlat
+SET /p newLat="Press ENTER to confirm this value or submit a new latitude: "||GOTO vlng
 SET vlat=%newLat%
 IF %debug%==0 ECHO:db     vlat %vlat%
 :vlng
@@ -229,198 +304,116 @@ IF %debug%==0 ECHO:db     vlng %vlng%
 
 :vsystem
 REM SSD
-SET vDrive=SSD
 SET myDelay=1
-ECHO:   Does your system have SSD or IDE drive : %vDrive%
-SET /p newDrive="Press ENTER to confirm this value or submit a new value: "||GOTO createNEWCSV
-SET vDrive=%newDrive%
-IF %debug%==0 ECHO:db     vDrive %vDrive%
-
-:createNEWCSV
-REM Write new csv 
-SET pbCONFIG=%pbDir%\Pokeborg.ini
-REM DIR
-REM SET batchPath=%current_small%
-REM SET installPath=%home_small%\
-
+ECHO:   In order to estimate file operation times,
+ECHO:   Does your system have SSD or IDE drive ?
+ECHO:       1 - Solid state drive
+ECHO:       2 - Older IDE hard drive
+ choice /C 12 /M "If you don't know, pick IDE: "
+ IF %ERRORLEVEL%==2 myDelay=1
+ IF %ERRORLEVEL%==1 myDelay=3
+:: End of user interaction
+:: Save the confirmed values
+CALL :pbn1CSVSave
+REM TODO - write the settings.ini
+CALL :csvConfigSave
 GOTO menuCreate
 
-:menuCreate
-IF %debug%==1 CLS
-ECHO.
-ECHO.
-ECHO.--------------------PokeBorg Ninja/User JSON Creator--------------------
-ECHO: 
-ECHO. 1 - Extract Settings from existing JSON
-ECHO: 
-ECHO. 2 - Confirm settings 
-ECHO: 
-ECHO. 3 - %PBN1-ninja% - write json 
-ECHO.
-ECHO. 4 - %PBN2-user%  - write json
-ECHO.
-ECHO. 5 - %pbCONFIG% - write json
-ECHO: 
-ECHO. These steps should be completed in order.
-ECHO.
-:_choice
-SET _ok=
-SET /p _ok= Make your choice or press Enter to close: ||goto:eof
-IF "%_ok%" == "3" SET CHOICE=PBN1-ninja&GOTO :PBN1-ninja
-IF "%_ok%" == "4" SET CHOICE=PBN2-user&GOTO :PBN2-user
-IF "%_ok%" == "5" SET CHOICE=Menu2&GOTO :Menu2
-IF "%_ok%" == "2" SET CHOICE=confirmProperties&GOTO :confirmProperties
-IF "%_ok%" == "1" SET CHOICE=jsonpicker&GOTO :jsonpicker
-GOTO :_choice 
+:csvConfigSave
+:: Write new  pbCONFIG.ini file
+ECHO Pokeborg.ini : PokeBorg Advanced Automation NinjaBotter > %pbCONFIG%
+ECHO Version : %version% >> %pbCONFIG%
+ECHO Windows : (FOR /F "tokens=*" %%W IN ('VER') DO ECHO %%W) >> %pbCONFIG%
+ECHO Java : (FOR /F "tokens=*" %%J IN ('java -fullversion 2^>^&1') DO ECHO %%J) >> %pbCONFIG%
+ECHO batchPath : %current_small% >> %pbCONFIG%
+ECHO installPath : %home_small%\ >> %pbCONFIG%
+ECHO myDelay : %myDelay% >> %pbCONFIG%
+ECHO botMode : %botMode% >> %pbCONFIG%
+ECHO myOrder : Collective >> %pbCONFIG%
+ECHO fstOrder : Borg >> %pbCONFIG%
+ECHO sndOrder : Matrix >> %pbCONFIG%
+ECHO trdOrder : Drone >> %pbCONFIG%
+ECHO homeLng : %vlng% >> %pbCONFIG%
+ECHO homeLat : %vlat% >> %pbCONFIG%
+ECHO cols : 100  >> %pbCONFIG%
+ECHO lines : 40 >> %pbCONFIG%
+ECHO colour : 9F >> %pbCONFIG%
+ECHO menuCLR : 9F >> %pbCONFIG%
+ECHO waitCLR : C >> %pbCONFIG%
+GOTO :EOF
 
-:PBN1-ninja
-call:AuthMake %ninjaFound%
-goto:Menu
-
-:AuthMake
-
-
+:step3 :: - PBN1-ninja - write json 
+:PBN1
+REM Check for setttings CSV
 ECHO.
 ECHO.
 ECHO.--------------------PokeBorg PBN1-ninja.json creator--------------------
 ECHO.
 ECHO.
-ECHO.{>%PBN1-ninja%
+ECHO:{>%PBN1-ninja%
+ECHO:    "lang": "%vlang%",>>%PBN1-ninja%
+ECHO:>>%PBN1-ninja%
+ECHO:  JSON Created:
+ECHO:  %PBN1-ninja%
+CALL :Display %PBN1-ninja% 
+PAUSE
+GOTO menuCreate
 
-
-Set /p YOUR_USERNAME="What's your username ?: "
-ECHO.    "username": "%YOUR_USERNAME%",>>%PBN1-ninja%
-ECHO.
-SET /p YOUR_PASSWORD="What's your password ?: "
-ECHO.    "password": "%YOUR_PASSWORD%",>>%PBN1-ninja%
-ECHO.
-SET /p SOME_LOCATION="What's the location you want to search ?: "
-ECHO.    "location": "%SOME_LOCATION%",>>%PBN1-ninja%
-ECHO.
-ECHO.    "favorite_locations":[>>%PBN1-ninja%
-ECHO.
-ECHO.Adding Favorite Locations....
-ECHO.
-call:morefav
-ECHO.
-ECHO.    ],>>%PBN1-ninja%
-SET /p GOOGLE_API="What's your Google Maps API Key ?: "
-ECHO.    "gmapkey": "%GOOGLE_API%",>>%PBN1-ninja%
-ECHO.
-SET /p hashkey="What's your Hashing Server Key ?: "
-ECHO.    "hashkey": "%hashkey%",>>%PBN1-ninja%
-ECHO.
-ECHO.    "encrypt_location": "",>>%PBN1-ninja%
-SET /p telegram="What's your telegram token? Enter for leave blank: "
-ECHO.    "telegram_token": "%telegram%">>%PBN1-ninja%
-ECHO.}>>%PBN1-ninja%
-goto :eof
-
-
-:morefav
-ECHO.
-SET /p _answer="Do you want to add a favorite location (Y/N)?: "
-IF "%_answer%" == "y" goto :choice1
-IF "%_answer%" == "n" goto :eof
-:choice1
-ECHO.
-ECHO.
-SET /p name="What City do you want to add ?: "
-SET /p coords="What coordinates has that City ? (example: 45.472849,9.177567 ): "
-ECHO.
-ECHO.
-:choice2
-ECHO.
-ECHO.
-SET /p _answer2="Do you want to add more favorite locations (Y/N)?: "
-IF "%_answer2%" == "y" ECHO.        {"name": "%name%", "coords": "%coords%"},>>%PBN1-ninja%&goto :favorite
-IF "%_answer2%" == "n" ECHO.        {"name": "%name%", "coords": "%coords%"}>>%PBN1-ninja%&goto :eof
-:favorite
-SET _answer2=
-SET name=
-SET coords=
-ECHO.
-ECHO.
-SET /p name="What City do you want to add ?: "
-SET /p coords="What coordinates has that City ? (example: 45.472849,9.177567 ): "
-goto:choice2
-
-:PBN2-user
+:step4 :: - PBN2-user - write json 
+:PBN2
 ECHO.
 ECHO.
 ECHO.--------------------PokeBorg PBN2-user.js creator--------------------
 ECHO.
 ECHO.
-ECHO.// MUST CONFIGURE THE USER ARRAY AND GOOGLE MAPS API KEY.>%PBN2-user%
-ECHO.// YOU CAN GET A KEY HERE: https://developers.google.com/maps/documentation/javascript/get-api-key>>%PBN2-user%
-ECHO.var userInfo = {>>%PBN2-user%
-Set /p users="What's the username to use ?: "
-ECHO.	users: ["%users%"],>>%PBN2-user%
-ECHO.	userZoom: true,>>%PBN2-user%
-ECHO.	zoom: 16,>>%PBN2-user%
-ECHO.	userFollow: true,>>%PBN2-user%
-SET /p API="What's your Google Maps API Key ?: "
-ECHO.	gMapsAPIKey: "%API%",>>%PBN2-user%
-ECHO.	botPath: true,>>%PBN2-user%
-ECHO.	actionsEnabled: false>>%PBN2-user%
-ECHO.};>>%PBN2-user%
-goto:menu
+ECHO:{>%PBN2-user%
+ECHO:  "donator": %vdonator%,>>%PBN2-user%
+ECHO:  "donatorcode": %vdonatorcode%,>>%PBN2-user%
+ECHO:  "verify": %vverify%,>>%PBN2-user%
+ECHO:  "hashLicense": %vhashLicense%,>>%PBN2-user%
+ECHO:  "audio": {>>%PBN2-user%
+ECHO:    "robbed": false,>>%PBN2-user%
+ECHO:    "pickup": false,>>%PBN2-user%
+ECHO:    "throwing": false,>>%PBN2-user%
+ECHO:    "caught": false,>>%PBN2-user%
+ECHO:    "pokedex": false,>>%PBN2-user%
+ECHO:    "missed": false,>>%PBN2-user%
+ECHO:    "escaped": false,>>%PBN2-user%
+ECHO:    "fled": false,>>%PBN2-user%
+ECHO:    "evolved": false,>>%PBN2-user%
+ECHO:    "transfered": false,>>%PBN2-user%
+ECHO:    "powerup": false,>>%PBN2-user%
+ECHO:    "struggle": true,>>%PBN2-user%
+ECHO:    "hatched": false,>>%PBN2-user%
+ECHO:    "levelup": true,>>%PBN2-user%
+ECHO:    "badge": false,>>%PBN2-user%
+ECHO:    "generic": true,>>%PBN2-user%
+ECHO:    "bagfull": true,>>%PBN2-user%
+ECHO:    "volume": 12>>%PBN2-user%
+ECHO:  },>>%PBN2-user%
+ECHO:  "minimizeToTray": false,>>%PBN2-user%
+ECHO:>>%PBN2-user%
+ECHO:  JSON Created:
+ECHO:  %PBN2-user% 
+CALL :Display %PBN2-user% 
+PAUSE
+GOTO EndPBN2Write
 
-:Menu2
-cls
-ECHO.
-ECHO.
-ECHO.--------------------PokeBorg config.json chooser--------------------
-ECHO.
-ECHO. 
-ECHO. 1 - config.json.example
-ECHO.
-ECHO. 2 - config.json.cluster.example
-ECHO.
-ECHO. 3 - config.json.map.example
-ECHO.
-ECHO. 4 - config.json.optimizer.example
-ECHO.
-ECHO. 5 - config.json.path.example
-ECHO.
-ECHO. 6 - config.json.pokemon.example
-ECHO.
-ECHO. Choose the config you want to use with your bot,
-ECHO.
-ECHO. to customize it you will have to edit %pbCONFIG%.
-ECHO.
-ECHO.
-:_choice2
-SET _ok2=
-SET /p _ok2= Make your choice or press Enter to close: ||goto:eof
-IF "%_ok2%" == "1" copy %pbCONFIG%.example %pbCONFIG%
-IF "%_ok2%" == "2" copy %pbCONFIG%.cluster.example %pbCONFIG%
-IF "%_ok2%" == "3" copy %pbCONFIG%.map.example %pbCONFIG%
-IF "%_ok2%" == "4" copy %pbCONFIG%.optimizer.example %pbCONFIG%
-IF "%_ok2%" == "5" copy %pbCONFIG%.path.example %pbCONFIG%
-IF "%_ok2%" == "6" copy %pbCONFIG%.pokemon.example %pbCONFIG%
-GOTO :EndUserData 
-
-:EndUserData
+:EndPBN2Write
 cls
 ECHO.
 ECHO.
 ECHO. Your %PBN1-ninja% and %PBN2-user% have been made.
 ECHO.
-ECHO. %pbCONFIG% needs to be customized
+ECHO. and your %pbCONFIG% has been customized.
 ECHO.
-ECHO. or you can run the bot with the default values.
+ECHO. You are ready to start the bot.
 ECHO.
-ECHO. After that you are ready to start the bot.
-ECHO.
-ECHO.
-timeout /t 10
-goto:eof
+PAUSE
+GOTO menuCreate
 
 :ninjaExtract
 REM Extracting Ninja key and user data 
-SET destJSON=%jsnDir%\PBN1ninja.csv
-SET propKEY=%jsnDir%\PBN1ninja.key
 SET raw_targetJSON=raw_targetJSON.json
 SET testKEY="donator"
 SET checkKeyResult=false
@@ -429,10 +422,10 @@ SET backupNinja=%jsnDir%\PBN2user-%DATE%_%myTime%.json
 IF %debug%==0 ECHO:db     jsnDir : %jsnDir%
 IF %debug%==0 ECHO:db     Backup file: %backupNinja%
 
-IF EXIST %destJSON% ECHO:  Backup of %destJSON% 
-IF EXIST %destJSON% copy %destJSON% %backupNinja%
-IF EXIST %destJSON% ECHO:  Deleting old %destJSON% 
-IF EXIST %destJSON% del %destJSON% 
+IF EXIST %destCSV% ECHO:  Backup of %destCSV% 
+IF EXIST %destCSV% copy %destCSV% %backupNinja%
+IF EXIST %destCSV% ECHO:  Deleting old %destCSV% 
+IF EXIST %destCSV% del %destCSV% 
 IF EXIST %raw_targetJSON% del %raw_targetJSON%
 
 REM CHECK to see if the JSON is valid
@@ -444,7 +437,7 @@ ECHO checkKeyResult: %checkKeyResult%
 ECHO:
 ECHO:  Extracting Ninja settings from:
 ECHO:     target: %targetJSON%
-ECHO:     writing to: %destJSON%
+ECHO:     writing to: %destCSV%
 ECHO:     using PropKey file: %PropKey%
 
 for /f "tokens=*" %%P in (%propKey%) do (
@@ -459,9 +452,9 @@ CALL :SEARCHTEXT
 CALL :SEARCHSPACE
 
 REM complete the extraction
-type %raw_targetJSON% > %destJSON%
+type %raw_targetJSON% > %destCSV%
 ECHO: 
-ECHO: Completed extraction of %sections% data from %targetJSON% to %destJSON%
+ECHO: Completed extraction of %sections% data from %targetJSON% to %destCSV%
 ECHO:
 
 IF %debug%==0 ECHO:db     Clean up the temporary file
@@ -502,6 +495,16 @@ del %textfile%
 rename %newfile%  %textfile%
 GOTO :EOF
 
+REM Displaying a JSON
+:Display
+REM USE - CALL:Display %targetJSON%
+IF %debug%==0 ECHO:db     Starting JSON Caller
+IF %debug%==0 ECHO:db     Variable : %1
+START cmd /k %pbDir%\PokeBorg-jsonDisplay.cmd %1%
+IF %debug%==0 ECHO:db     ErrorLevel: %errorlevel%
+IF %debug%==0 ECHO:db     End of display
+IF %debug%==0 ECHO:db     PAUSE
+GOTO :EOF
 
 :TLOCAL
 ECHO: && ECHO:TESTING Local Settings 
