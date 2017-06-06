@@ -22,7 +22,7 @@ REM -- Determine assigned variables
 :: 4 Function:
 :: 5 SQL statement
 :: 6 DEBUG
-SET DEBUG=0
+SET debug=1
 :: 7 Return
 
 :: setlocal
@@ -34,6 +34,7 @@ color 9F
 REM mode con: cols=100 lines=40
 Title = PokeBorg Advanced Automation Hive Control
 SET "space= "
+REM CALL PokeBorg-settings.cmd
 
 :initVars
 REM -- Initialize local variables
@@ -41,13 +42,13 @@ SET "situation=%~n0"
 
 :debugMode  :: -- determine debug mode
 :: Local debug dependent on global debug and parameters
-SET %_debug%=0
-:: SET _debug here 0/no 1/yes 2/log
-IF EXIST "%6" SET SET %_debug%=%6
-IF %debug%=1 choice /C YN /M "Turn debug for %situation% on?"
-IF %ERRORLEVEL%==1 SET %_debug%=%debug%
-IF %_debug%==1 ECHO:db     Debug mode activated - debug: %debug%  _debug: %_debug%   para6: %6
-IF %_debug%==1 choice /C YN /M "Turn ECHO on?"
+SET _debug=0
+:: SET _debug here 0-no 1-yes 2-log
+IF EXIST %6 SET %_debug%=%6
+IF %debug%==1 (choice /C YN /M "Turn debug for %situation% on?")
+IF %ERRORLEVEL%==1 SET _debug=%debug%
+IF %_debug%==1 (ECHO: Debug mode activated - debug: %debug%  _debug: %_debug%   para6: %6)
+IF %_debug%==1 (choice /C YN /M "Turn ECHO on?")
 IF %ERRORLEVEL%==1 ECHO ON
 
 :initPaths
@@ -108,27 +109,6 @@ ECHO:db     _debug            : %_debug%
 :logLocal
 CALL :TLOCAL >> %log% 2>&1
 
-:logDBOutput
-:: Perform and log checks on db before staring operations
-ECHO:db -- Function: main >> %log% 
-
- ECHO:  >> %log% 
- CALL :checkDb
- ECHO:  Read db test:>> %log% 
- CALL %_engine% %_db% ".read %_db%" >> %log% 2>&1
- ECHO:=========================================================>> %log% 
- ECHO:  %_db% .show >> %log% 
- CALL %_engine% %_db% ".show" >> %log% 2>&1
- ECHO:=========================================================>> %log% 
- CALL %_engine% %_db% ".database" >> %log% 2>&1
- ECHO:  Tables: >> %log% 
- CALL %_engine% %_db% ".tables" >> %log% 2>&1
- ECHO:=========================================================>> %log% 
- ECHO:  Schema sqlite_master: >> %log% 
- CALL %_engine% %_db% ".schema sqlite_master" >> %log% 2>&1
- ECHO:=========================================================>> %log% 
- ECHO:  >> %log% 
-
 :setupSQLite
 ECHO:db -- Function: setup >> %log% 
 REM - First run add SQLite to path
@@ -147,6 +127,26 @@ ECHO:db -- Function: checkTable >> %log%
   ECHO: Table may not exist, attempting create statement
   CALL :setupData
  )
+GOTO logDBOutput
+
+:logDBOutput
+:: Perform and log checks on db before staring operations
+ECHO:db -- Function: logDBOutput >> %log% 
+ ::IF %_debug%==1 CALL :checkDb
+ ECHO:  Read db test:>> %log% 
+ CALL %_engine% %_db% ".read %_db%" >> %log% 2>&1
+ ECHO:=========================================================>> %log% 
+ ECHO:  %_db% .show >> %log% 
+ CALL %_engine% %_db% ".show" >> %log% 2>&1
+ ECHO:=========================================================>> %log% 
+ CALL %_engine% %_db% ".database" >> %log% 2>&1
+ ECHO:  Tables: >> %log% 
+ CALL %_engine% %_db% ".tables" >> %log% 2>&1
+ ECHO:=========================================================>> %log% 
+ ECHO:  Schema sqlite_master: >> %log% 
+ CALL %_engine% %_db% ".schema sqlite_master" >> %log% 2>&1
+ ECHO:=========================================================>> %log% 
+ ECHO:  >> %log% 
 GOTO main
 
 :setupData
@@ -171,14 +171,17 @@ ECHO:db -- Function: displayDB >> %log%
  ECHO:  Tables:
  CALL %_engine% %_db% ".tables"
  ECHO:=========================================================
- ECHO:  Read test:
- CALL %_engine% %_db% ".read %_db%"
+ ECHO:  Full Schema
+ CALL %_engine% %_db% ".fullschema"
  ECHO:=========================================================
- ECHO:   %_db% .show
- CALL %_engine% %_db% ".show"
+ ECHO:  Full indexes:
+ CALL %_engine% %_db% ".indexes"
  ECHO:=========================================================
- ECHO:  Schema sqlite_master:
- CALL %_engine% %_db% ".schema sqlite_master"
+ ECHO:  Indexes %_db%:
+ CALL %_engine% %_db% ".indexes %_db%"
+ ECHO:=========================================================
+ ECHO:  Schema  %_db%:
+ CALL %_engine% %_db% ".schema %_db%"
  ECHO:=========================================================
  ECHO:
  PAUSE
@@ -189,6 +192,7 @@ GOTO :EOF
 
 :loop
 ECHO:db -- Function: loop  >> %log%
+IF %_debug%==0 CLS
 ECHO:=========================================================>> %log% 
  SET _contd=
  SET _input= 
@@ -234,11 +238,10 @@ ECHO:db -- Function: printMenu >> %log%
  
 :testFunction
 ECHO:db -- Function: testFunction >> %log%
-	ECHO: Test Function
-	ECHO:  Import CSV from SQL file
-	SET "_tmp=import.sql"
-	CALL %_engine% %_db% < "%_tmp%" >> %log% 2>&1
-	 CALL %_engine% -header -column %_db% "%*" >> %log% 2>&1
+	:: Test this output
+	echo @echo  SELECT name from person where id=^%1^;^|  sqlite3.exe mydatabase.sqlite > person.bat
+	echo @echo  SELECT phone from person where id=^%1^;^|  sqlite3.exe mydatabase.sqlite > phone.bat
+	:: use - person 4 - output the 4th entry
 GOTO :EOF
 
 :importCSV
@@ -250,7 +253,16 @@ ECHO:db -- Function: importCSV >> %log%
 	CALL %_engine% -header -column %_db% "%_select%"
 GOTO :EOF
  
-:testCreateTableSQL :: WORKS
+:exportCSV
+ECHO:db -- Function: importCSV >> %log%
+	ECHO:  Import CSV from SQL file
+	REM ASk for file  or 
+	SET "_tmp=export.sql"
+	CALL %_engine% %_db% ".output %_tmp%" >> %log% 2>&1
+	CALL %_engine% %_db% "%_select%"
+GOTO :EOF
+
+ :testCreateTableSQL :: WORKS
 	ECHO: Test Function
 	ECHO:  Create table from SQL file
 	SET "_tmp=createTable.sql"

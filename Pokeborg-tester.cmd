@@ -11,7 +11,7 @@ REM =========================================
 REM Probably not a good idea to change these settings
 REM Debug - 0 for debug
 SET debug=1
-CALL Pokeborg\PBsettings.cmd %debug%
+CALL Pokeborg\PokeBorg-settings.cmd %debug%
 
 REM Select Drones to Test
 SET /a order=0

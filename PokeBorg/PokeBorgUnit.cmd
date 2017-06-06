@@ -8,7 +8,7 @@ REM =========================================
 REM  Email: dilborg@hotmail.com
 REM  http://pokebot.ninja/thread-4859.html
 REM =========================================
-CALL PBsettings.cmd
+CALLPokeBorg-settings.cmd
 REM Debug - `0 for debug
 SET debug=1
 

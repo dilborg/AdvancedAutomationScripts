@@ -9,7 +9,7 @@ REM  Email: dilborg@hotmail.com
 REM  http://pokebot.ninja/thread-4859.html
 REM =========================================
 REM Probably not a good idea to change these settings
-CALL PBsettings.cmd
+CALL PokeBorg-settings.cmd
 REM Debug - `0 for debug
 SET debug=1
 

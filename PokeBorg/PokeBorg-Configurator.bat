@@ -26,6 +26,7 @@ color 9F
 mode con: cols=100 lines=40
 Title = PokeBorg Advanced Automation Configuration
 SET "space= "
+REM CALL PokeBorg-settings.cmd
 
 :initVars
 REM -- Initialize local variables

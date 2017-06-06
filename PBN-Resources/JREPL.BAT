@@ -872,20 +872,20 @@
 setlocal disableDelayedExpansion
 
 REM Debug - `0 for debug
-REM SET debug=1
+SET debug=1
 
 REM TESTING parameter output
 IF %debug%==1  GOTO DB1
-IF %debug%==0 ECHO: --Current func    : JREPL.BAT >> %MyLogFile% 
-    ECHO Parameter1: %1 >> %MyLogFile% 
-    ECHO Parameter2: %2 >> %MyLogFile% 
-    ECHO Parameter3: %3 >> %MyLogFile% 
-    ECHO Parameter4: %4 >> %MyLogFile% 
-    ECHO Parameter5: %5 >> %MyLogFile% 
-    ECHO Parameter6: %6 >> %MyLogFile% 
-    ECHO Parameter7: %7 >> %MyLogFile% 
-    ECHO Parameter8: %8 >> %MyLogFile% 
-	ECHO Parameter9: %9 >> %MyLogFile% 
+    ECHO Parameter1: %1
+    ECHO Parameter2: %2
+    ECHO Parameter3: %3
+    ECHO Parameter4: %4
+    ECHO Parameter5: %5
+    ECHO Parameter6: %6
+    ECHO Parameter7: %7
+    ECHO Parameter8: %8
+	ECHO Parameter9: %9
+PAUSE
 :DB1
 
 :: Process Help
@@ -948,9 +948,9 @@ if defined /RTN (
 )
 
 set ^"/FIND=%1"
-IF %debug%==0 ECHO:db     FIND = %1 >> %MyLogFile%
+IF %debug%==0 ECHO:db     FIND = %1
 set ^"/REPL=%2"
-IF %debug%==0 ECHO:db     REPL = %2 >> %MyLogFile%
+IF %debug%==0 ECHO:db     REPL = %2
 call :GetScript /SCRIPT
 set "/LOCK="
 

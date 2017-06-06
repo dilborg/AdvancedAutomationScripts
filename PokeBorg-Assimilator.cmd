@@ -210,7 +210,7 @@ ECHO:
 ECHO:--------------------Downloading PokeBorg--------------------
 ECHO: Please wait while PokeBorg is downloaded.
 ECHO: 
-curl -L https://github.com/dilborg/AdvancedAutomationScripts/raw/master/PBN-JAR/PokeBorg.zip > %downPath%\PokeBorg.zip
+curl -L https://github.com/dilborg/AdvancedAutomationScripts/raw/master/PBN-Resources/PokeBorg.zip > %downPath%\PokeBorg.zip
 
 REM -TODO Test to see if the download really worked . . 
 ECHO:db     PokeBorg download result: %ERRORLEVEL% >> %log%
@@ -229,7 +229,7 @@ ECHO:
 ECHO:--------------------Downloading Ninja.Bot--------------------
 ECHO: Please wait while PokeNinja.BOT is downloaded.
 ECHO: 
-curl -L https://github.com/dilborg/AdvancedAutomationScripts/raw/master/PBN-JAR/PokeBotNinja.zip > %downPath%\PokeBotNinja.zip
+curl -L https://github.com/dilborg/AdvancedAutomationScripts/raw/master/PBN-Resources/PokeBotNinja.zip > %downPath%\PokeBotNinja.zip
 
 REM -TODO Test to see if the download really worked . . 
 ECHO:db     Ninja.Bot download result: %ERRORLEVEL% >> %log%
