@@ -15,18 +15,16 @@ SET version=02.102-beta&REM Jun 03 2017 - installation and configurations suppor
 
 :passedVars
 REM -- Determine assigned variables 
-::  IF vars then dont call the menu
+REM -- Determine assigned variables 
+SET "debug=%1"
+IF NOT DEFINED debug SET debug=0
+
 :: 1 -> 
 :: 2 db
 :: 3 table
 :: 4 Function:
 :: 5 SQL statement
-:: 6 DEBUG
-SET debug=1
 :: 7 Return
-
-:: setlocal
-:: Global Variables here
 
 :init
 REM.-- Set the window parameters
@@ -40,16 +38,15 @@ REM CALL PokeBorg-settings.cmd
 REM -- Initialize local variables
 SET "situation=%~n0"
 
-:debugMode  :: -- determine debug mode
+:debugMode  
 :: Local debug dependent on global debug and parameters
-SET _debug=0
+SET "_debug=0"
 :: SET _debug here 0-no 1-yes 2-log
-IF EXIST %6 SET %_debug%=%6
-IF %debug%==1 (choice /C YN /M "Turn debug for %situation% on?")
-IF %ERRORLEVEL%==1 SET _debug=%debug%
-IF %_debug%==1 (ECHO: Debug mode activated - debug: %debug%  _debug: %_debug%   para6: %6)
-IF %_debug%==1 (choice /C YN /M "Turn ECHO on?")
-IF %ERRORLEVEL%==1 ECHO ON
+IF %debug% EQU 1 ( CHOICE /C YN /M "Enable %situation% debug?" )
+IF %ERRORLEVEL% EQU 1 SET "_debug=%debug%"
+IF %_debug% EQU 1 ( ECHO: Debug mode activated - debug: %debug%  _debug: %_debug%   para1: %1 )
+IF %_debug% EQU 1 ( CHOICE /C YN /M "Turn ECHO on?" )
+IF %ERRORLEVEL% EQU 1 ECHO ON
 
 :initPaths
 REM -- Determine paths and directories 
@@ -365,6 +362,6 @@ ECHO:db -- Function: end >> %log%
  START /B /I notepad.exe PokeBorg-Hive.log
  endlocal
 EXIT /B %ERRORLEVEL%
-ECHO: Done, IF still active, then it is safe to close.
+ECHO: %situation% ended as exptected, safe to close window.
 
 :EOF

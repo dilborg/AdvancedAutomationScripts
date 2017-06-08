@@ -139,13 +139,12 @@ SET lat=0.0
 FOR /f "delims=" %%x IN (%pbDir%\tabfile.txt) DO SET tab=%%x
 FOR /f "delims=" %%x IN (%pbDir%\space.txt) DO SET space=%%x
 SET COL=%TAB%:
-SET cols=100 
-SET lines=40
+SET cols=120 
+SET lines=60
 SET colour=9F
 SET menuCLR=9F
 SET waitCLR=C
 ECHO:db -- End of PBSettings.cmd
 ECHO:db     
-EXIT /B %ERRORLEVEL%
 
 :EOF

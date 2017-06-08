@@ -12,6 +12,7 @@ REM Probably not a good idea to change these settings
 CALL PokeBorg-settings.cmd
 REM Debug - `0 for debug
 SET debug=1
+mode con: cols=80 lines=40
 
 REM TESTING parameter output
 IF %debug%==1  GOTO DB1
@@ -134,11 +135,11 @@ REM BUILD DIRECTORIES
 ECHO.
 ECHO. Please wait, creating directory stucture
 ECHO. 
-mkdir %myBorg% 
+mkdir %myBorg% >> nul
 ECHO. Created %borgDir%
 cd %myBorg%
 FOR /L %%A IN (0,1,9) DO (
-  mkdir %sndOrder%-%borg%%%A 
+  mkdir %sndOrder%-%borg%%%A  >> nul
   ECHO Created %myBorg%\%sndOrder%-%borg%%%A
     FOR /L %%B IN (0,1,9) DO call :Maker %%A %%B
   )   

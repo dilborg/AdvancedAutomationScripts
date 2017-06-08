@@ -2,7 +2,6 @@
 @setlocal enableextensions enabledelayedexpansion
 %~d0
 cd %~dp0
-
 :: =========================================
 :: Name     : PokeBorg-Configurator.cmd
 :: Purpose  : Install Pokeborg helper files and create PokeBorg directories
@@ -18,22 +17,29 @@ SET version=02.102-beta&REM Jun 03 2017 - installation and configurations suppor
 
 :passedVars
 REM -- Determine assigned variables 
+SET "debug=%1"
+IF NOT DEFINED debug SET debug=0
 
 :init
 REM.-- Set the window parameters
 cls
-color 9F
-mode con: cols=100 lines=40
 Title = PokeBorg Advanced Automation Configuration
 SET "space= "
-REM CALL PokeBorg-settings.cmd
+CALL PokeBorg-settings.cmd
 
 :initVars
 REM -- Initialize local variables
-SET "situation=%~n0"
-REM SET DEBUG=0 here 
-SET DEBUG=0
-IF %debug%==0 ECHO:db     Debug mode activated - Debug: %debug%
+SET "situation=%~n0
+
+:debugMode  
+:: Local debug dependent on global debug and parameters
+SET "_debug=0"
+:: SET _debug here 0-no 1-yes 2-log
+IF %debug% EQU 1 ( CHOICE /C YN /M "Enable %situation% debug?" )
+IF %ERRORLEVEL% EQU 1 SET "_debug=%debug%"
+IF %_debug% EQU 1 ( ECHO: Debug mode activated - debug: %debug%  _debug: %_debug%   para1: %1 )
+IF %_debug% EQU 1 ( CHOICE /C YN /M "Turn ECHO on?" )
+IF %ERRORLEVEL% EQU 1 ECHO ON
 
 :initPaths
 REM -- Determine paths and directories 
@@ -65,8 +71,8 @@ SET propKEY=%jsnDir%\PBN1ninja.key
 
 :localChecks
 :displayChecks
-IF %debug%==0 ECHO:db     Start of Assimilator process 
-IF %debug%==0 CALL :TLOCAL
+IF %_debug%==1 ECHO:db     Start of Assimilator process 
+IF %_debug%==1 CALL :TLOCAL
 
 :checkSINGULARITY
 REM TODO Detect unzip success and run download if not there
@@ -104,7 +110,7 @@ ECHO:
 PAUSE
 
 :Warning
-IF %debug%==1 CLS
+IF %_debug%==0 CLS
 IF NOT EXIST "%PBN2-user%" GOTO menuCreate
 color C
 ECHO.
@@ -128,7 +134,7 @@ color 9F
 GOTO menuCreate
 
 :menuCreate
-IF %debug%==1 CLS
+IF %_debug%==0 CLS
 ECHO.
 ECHO.
 ECHO.--------------------PokeBorg Ninja/User JSON Creator--------------------
@@ -137,9 +143,13 @@ ECHO. Step 1 - Extract Settings from existing JSON
 ECHO: 
 ECHO. Step 2 - Confirm extracted settings 
 ECHO: 
-ECHO. Step 3 - %PBN1-ninja% - write json 
+ECHO. Step 3 - Create PBN1 JSON: %PBN1-ninja%
 ECHO.
-ECHO. Step 4 - %PBN2-user%  - write json
+ECHO. Step 4 - Create PBN2 JSON: %PBN2-user%
+ECHO.
+ECHO.      5 - Done : Launch Main PokeBorg Application
+ECHO:
+ECHO.      Q - Quit
 ECHO.
 ECHO: 
 ECHO. These steps should be completed in order.
@@ -151,13 +161,15 @@ IF "%_ok%" == "1" SET CHOICE=jsonpicker&GOTO jsonpicker
 IF "%_ok%" == "2" SET CHOICE=confirmProperties&GOTO confirmProperties
 IF "%_ok%" == "3" SET CHOICE=PBN1&GOTO PBN1
 IF "%_ok%" == "4" SET CHOICE=PBN2&GOTO PBN2
+IF "%_ok%" == "5" SET CHOICE=Start_Pokeborg&GOTO Go_Pokeborg
+IF "%_ok%" == "q" SET CHOICE=END&GOTO END
 
 GOTO :_choice 
 
 :step1 :: -- Extract Settings from existing JSON
 :jsonPicker
 REM -- Ask to scan an existing JSON
-IF %debug%==0 ECHO: -- Function:  jsonPicker
+IF %_debug%==1 ECHO: -- Function:  jsonPicker
 ECHO.
 ECHO.
 ECHO.--------------------PokeBorg ninja.json extractor--------------------
@@ -165,10 +177,10 @@ ECHO:
 ECHO: Please select an existing JSON:
 ECHO: 
 CALL JSONChooser ninjaFound
-IF %debug%==0 ECHO:db     ninjaFound=%ninjaFound%
+IF %_debug%==1 ECHO:db     ninjaFound=%ninjaFound%
 REM TODO Parse the file directory name to short form
 SET "targetJSON=%ninjaFound%"
-IF %debug%==0 ECHO:db     targetJSON=%targetJSON%
+IF %_debug%==1 ECHO:db     targetJSON=%targetJSON%
 
 :: Using sample JSON, extract to PBN1-ninja.csv
 CALL :ninjaExtract
@@ -183,14 +195,14 @@ FOR /F "tokens=1-2 delims=:," %%A IN (%destCSV%) DO call :subAssignCSV %%A %%B
 GOTO :eof
 
 :subAssignCSV
-	IF %debug%==0 ECHO:db     %1 , %2
+	IF %_debug%==1 ECHO:db     %1 , %2
 	SET propA=%1
 	SET propA=%propA: =%
 	SET propA=%propA:"=%
 	SET propB=%2
 	SET propB=%propB: =%
 	SET propB=%propB:"=%
-	IF %debug%==0 ECHO:db      %propA% , %propB%
+	IF %_debug%==1 ECHO:db      %propA% , %propB%
 	SET v%propA%=%propB%
 GOTO :EOF
 
@@ -215,23 +227,20 @@ GOTO PBN1
 :confirmProperties
 :: -- Confirm extracted settings
 ::  Check for existing Ninja CSV extracted data
-IF %vlang% NOT EQ "" GOTO displayProperties
-IF %destCSV% NOT EXIST GOTO pbn1CSVErr
+IF NOT DEFINED %vlang% GOTO showProperties
+IF NOT EXIST %destCSV% GOTO pbn1CSVErr
 :: Vars are not in state, loading from saved CSV
 CALL :assignFromCSV
 
-:assignFromCSV
-
-
-:displayProperties
-IF %debug%==1 CLS
-IF %debug%==0 ECHO:db   Using imported keys and values
-IF %debug%==0 ECHO:db      vlang : %vlang%
-IF %debug%==0 ECHO:db      vdonator : %vdonator%
-IF %debug%==0 ECHO:db      vdonatorcode : %vdonatorcode%
-IF %debug%==0 ECHO:db      vverify : %vverify%
-IF %debug%==0 ECHO:db      vhashLicense : %vhashLicense%
-IF %debug%==0 ECHO:db      vgoogleAPI : %vgoogleAPI%
+:showProperties
+IF %_debug%==0 CLS
+ECHO:    Using imported keys and values:
+ECHO:       lang : %vlang%
+ECHO:       donator : %vdonator%
+ECHO:       donatorcode : %vdonatorcode%
+ECHO:       verify : %vverify%
+ECHO:       hashLicense : %vhashLicense%
+ECHO:       googleAPI : %vgoogleAPI%
 ECHO.
 ECHO.
 ECHO.--------------------Confirm Ninja/User Settings--------------------
@@ -240,37 +249,37 @@ ECHO:
 ECHO:   Confirm language : %vlang%
 SET /p newlang="Press ENTER to confirm this value or submit a new value: "||GOTO vdonator
 SET vlang=%newlang%
-IF %debug%==0 ECHO:db     vlang %vlang%
+IF %_debug%==1 ECHO:db     vlang %vlang%
 
 :vdonator
 ECHO:   Confirm Ninja donator email : %vdonator%
 SET /p newUser="Press ENTER to confirm this value or submit a new value: "||GOTO vdonatorcode
 SET vdonator=%vdonator%
-IF %debug%==0 ECHO:db     vdonator %vdonator%
+IF %_debug%==1 ECHO:db     vdonator %vdonator%
 
 :vdonatorcode
 ECHO:   Confirm Ninja donator code : %vdonatorcode%
 SET /p newDCode="Press ENTER to confirm this value or submit a new value: "||GOTO vverify
 SET vdonatorcode=%newDCode%
-IF %debug%==0 ECHO:db     vdonatorcode %vdonatorcode%
+IF %_debug%==1 ECHO:db     vdonatorcode %vdonatorcode%
 
 :vverify
 ECHO:   Confirm Ninja donator code : %vverify%
 SET /p newVerify="Press ENTER to confirm this value or submit a new value: "||GOTO vgoogleAPI
 SET vverify=%newVerify%
-IF %debug%==0 ECHO:db     vverify %vverify%
+IF %_debug%==1 ECHO:db     vverify %vverify%
 
 :vgoogleAPI
 ECHO:   Confirm Google API : %vgoogleAPI%
 SET /p newGoogle="Press ENTER to confirm this value or submit a new value: "||GOTO vhashLicense
 SET vgoogleAPI=%newGoogle%
-IF %debug%==0 ECHO:db     vgoogleAPI %vgoogleAPI%
+IF %_debug%==1 ECHO:db     vgoogleAPI %vgoogleAPI%
 
 :vhashLicense
 ECHO:   Confirm Bossland hashing license : %vhashLicense%
 SET /p newHash="Press ENTER to confirm this value or submit a new value: "||GOTO optionalSettings
 SET vhashLicense=%newHash%
-IF %debug%==0 ECHO:db     vhashLicense %vhashLicense%
+IF %_debug%==1 ECHO:db     vhashLicense %vhashLicense%
 
 :optionalSettings
 ECHO.
@@ -286,22 +295,21 @@ ECHO:       1 -  150 RPM
 ECHO:       2 -  500 RPM
 ECHO:       3 - 1000 RPM
  choice /C 123 /M "Select your Bossland Key RPM:  "
- IF %ERRORLEVEL%==3 myDelay=3
- IF %ERRORLEVEL%==2 myDelay=2
- IF %ERRORLEVEL%==1 myDelay=1
+ IF %ERRORLEVEL%==3 SET botMode=3
+ IF %ERRORLEVEL%==2 SET botMode=2
+ IF %ERRORLEVEL%==1 SET botMode=1
 
 :homeLocation
-Vegas - Strip // 36.112665, -115.173216
 SET vlat=36.112665
 SET vlng=-115.173216
 ECHO:   Confirm Home Location as Vegas : %vlat%, %vlng%
 SET /p newLat="Press ENTER to confirm this value or submit a new latitude: "||GOTO vlng
 SET vlat=%newLat%
-IF %debug%==0 ECHO:db     vlat %vlat%
+IF %_debug%==1 ECHO:db     vlat %vlat%
 :vlng
 SET /p newLng="Press ENTER to confirm this value or submit a new longitude: "||GOTO vsystem
 SET vlng=%newLng%
-IF %debug%==0 ECHO:db     vlng %vlng%
+IF %_debug%==1 ECHO:db     vlng %vlng%
 
 :vsystem
 REM SSD
@@ -311,8 +319,8 @@ ECHO:   Does your system have SSD or IDE drive ?
 ECHO:       1 - Solid state drive
 ECHO:       2 - Older IDE hard drive
  choice /C 12 /M "If you don't know, pick IDE: "
- IF %ERRORLEVEL%==2 myDelay=1
- IF %ERRORLEVEL%==1 myDelay=3
+ IF %ERRORLEVEL%==2 SET myDelay=1
+ IF %ERRORLEVEL%==1 SET myDelay=3
 :: End of user interaction
 :: Save the confirmed values
 CALL :pbn1CSVSave
@@ -356,7 +364,7 @@ ECHO:    "lang": "%vlang%",>>%PBN1-ninja%
 ECHO:>>%PBN1-ninja%
 ECHO:  JSON Created:
 ECHO:  %PBN1-ninja%
-CALL :Display %PBN1-ninja% 
+IF %_debug%==1 CALL :Display %PBN1-ninja% 
 PAUSE
 GOTO menuCreate
 
@@ -396,7 +404,7 @@ ECHO:  "minimizeToTray": false,>>%PBN2-user%
 ECHO:>>%PBN2-user%
 ECHO:  JSON Created:
 ECHO:  %PBN2-user% 
-CALL :Display %PBN2-user% 
+IF %_debug%==1 CALL :Display %PBN2-user% 
 PAUSE
 GOTO EndPBN2Write
 
@@ -404,14 +412,24 @@ GOTO EndPBN2Write
 cls
 ECHO.
 ECHO.
-ECHO. Your %PBN1-ninja% and %PBN2-user% have been made.
+ECHO. Your %PBN1-ninja% and %PBN2-user% have been created,
 ECHO.
 ECHO. and your %pbCONFIG% has been customized.
 ECHO.
 ECHO. You are ready to start the bot.
 ECHO.
+GOTO Go_Pokeborg
+
+:Go_Pokeborg
+REM -- Function Go_Pokeborg - used to start the Main Program
+ECHO: *** Calling Pokeborg function from %situation% 
+ECHO: 
+ECHO: +----------------------Begining Configurator---------------------------+
+ECHO:   This function will open the PokeBorg Configurator
+ECHO:
 PAUSE
-GOTO menuCreate
+CALL "%myPogoDir%\PokeBorg.cmd" %debug%
+EXIT
 
 :ninjaExtract
 REM Extracting Ninja key and user data 
@@ -420,8 +438,8 @@ SET testKEY="donator"
 SET checkKeyResult=false
 SET backupNinja=%jsnDir%\PBN2user-%DATE%_%myTime%.json
 
-IF %debug%==0 ECHO:db     jsnDir : %jsnDir%
-IF %debug%==0 ECHO:db     Backup file: %backupNinja%
+IF %_debug%==1 ECHO:db     jsnDir : %jsnDir%
+IF %_debug%==1 ECHO:db     Backup file: %backupNinja%
 
 IF EXIST %destCSV% ECHO:  Backup of %destCSV% 
 IF EXIST %destCSV% copy %destCSV% %backupNinja%
@@ -442,13 +460,13 @@ ECHO:     writing to: %destCSV%
 ECHO:     using PropKey file: %PropKey%
 
 for /f "tokens=*" %%P in (%propKey%) do (
-	IF %debug%==0 ECHO:db     propKEY: %%P
+	IF %_debug%==1 ECHO:db     propKEY: %%P
 	IF %%P == ENDBRACKET type %jsnDir%PBN8Bracket.json >> %raw_targetJSON%
 	find /i %%P %targetJSON% >> %raw_targetJSON%
 	
 	)
-IF %debug%==0 ECHO:db     PAUSE
-IF %debug%==0 ECHO:db     Finished creating %raw_targetJSON%
+IF %_debug%==1 ECHO:db     PAUSE
+IF %_debug%==1 ECHO:db     Finished creating %raw_targetJSON%
 CALL :SEARCHTEXT
 CALL :SEARCHSPACE
 
@@ -458,29 +476,29 @@ ECHO:
 ECHO: Completed extraction of %sections% data from %targetJSON% to %destCSV%
 ECHO:
 
-IF %debug%==0 ECHO:db     Clean up the temporary file
+IF %_debug%==1 ECHO:db     Clean up the temporary file
 del %raw_targetJSON% > nul
-IF %debug%==0 ECHO:db     End of extract process
+IF %_debug%==1 ECHO:db     End of extract process
 PAUSE
 GOTO :EOF
 
 :SEARCHTEXT
 REM  Removing the search parameter the 1st time
-IF %debug%==0 ECHO:db     Removing text from %raw_targetJSON%
+IF %_debug%==1 ECHO:db     Removing text from %raw_targetJSON%
 CALL :SEARCHREPLACE
 GOTO :EOF
 
 :SEARCHSPACE
 REM This is a bug fix unable to define empty space as variable
 REM Run the 2nd time to remove spaces
-IF %debug%==0 ECHO:db     Removing spaces from %raw_targetJSON%
+IF %_debug%==1 ECHO:db     Removing spaces from %raw_targetJSON%
 CALL :SEARCHREPLACE
 GOTO :EOF
 
 :SEARCHREPLACE
 REM TODO add variables
 @ECHO off &setlocal
-IF %debug%==0 ECHO:db     Search replace function for %raw_targetJSON%
+IF %_debug%==1 ECHO:db     Search replace function for %raw_targetJSON%
 set "search=---------- %targetJSON%"
 set "replace="
 set "textfile=%raw_targetJSON%"
@@ -499,12 +517,12 @@ GOTO :EOF
 REM Displaying a JSON
 :Display
 REM USE - CALL:Display %targetJSON%
-IF %debug%==0 ECHO:db     Starting JSON Caller
-IF %debug%==0 ECHO:db     Variable : %1
+IF %_debug%==1 ECHO:db     Starting JSON Caller
+IF %_debug%==1 ECHO:db     Variable : %1
 START cmd /k %pbDir%\PokeBorg-jsonDisplay.cmd %1%
-IF %debug%==0 ECHO:db     ErrorLevel: %errorlevel%
-IF %debug%==0 ECHO:db     End of display
-IF %debug%==0 ECHO:db     PAUSE
+IF %_debug%==1 ECHO:db     ErrorLevel: %errorlevel%
+IF %_debug%==1 ECHO:db     End of display
+IF %_debug%==1 ECHO:db     PAUSE
 GOTO :EOF
 
 :TLOCAL
