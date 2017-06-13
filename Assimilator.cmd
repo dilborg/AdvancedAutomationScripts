@@ -639,6 +639,10 @@ ECHO Test/ECHO off done
 PAUSE
 GOTO :eof
 
+:: -------------------------------
+:: Graceful end of program
+:: -------------------------------
+
 :end
 REM -- Tidy up a few things
 ECHO:db -- Function: end >> %log%
