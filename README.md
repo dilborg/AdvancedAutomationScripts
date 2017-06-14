@@ -14,8 +14,8 @@ There are no detailed instructions or howtos (yet).
 These scripts are all open source, so if you find something not working properly or you want to customize it, then please submit your suggestions to the GitHub repository.
 
 Where to start?
-- Download the Assimilator.CMD file
-https://github.com/dilborg/AdvancedAutomationScripts/blob/master/Assimilator.cmd
+- Download the Assimilator.CMD file:
+https://raw.githubusercontent.com/dilborg/AdvancedAutomationScripts/master/Assimilator.cmd
 - Save it to a directory on your computer 
 - Run the Assimilator . .
 
