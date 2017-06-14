@@ -449,6 +449,15 @@ GOTO :EOF
 	ECHO: ===========================THANKYOU=========================== && ECHO:
 GOTO :EOF
 
+:Menu-PBCC
+:: Initialize Menu options and displays
+SET Menu-Title=PokeBorg Advanced Automation NinjaBotter
+SET Menu-Type=Option
+SET Menu-Description=PokeBorg Command Console
+SET Menu-Prompt="Select a command option:"
+GOTO :EOF
+
+:Option_PBCC_R Initiate %myMatrix% %trdOrder% in Regular Farm Mode %TAB%%COL%
 
 ::-----------------------------------------------------------
 :: helper functions follow below here

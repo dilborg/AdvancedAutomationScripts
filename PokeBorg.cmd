@@ -117,7 +117,7 @@ IF %C% == 5 GOTO jsMenu
 IF %C% == 4 GOTO D1
 IF %C% == 3 GOTO launchSNIPER
 IF %C% == 2 GOTO launchGYM
-IF %C% == 1 GOTO Poke10Unit
+IF %C% == 1 GOTO launchFARM
 EXIT
 
 :D1
@@ -372,7 +372,7 @@ GOTO :EOF
 
 : DRONE UNIT LAUNCHER FUNCTIONS
 :PRELAUNCH 
-IF %_debug%==1 ECHO:db     Begin PRELAUNCH process >> %log% 
+ECHO:db     Begin PRELAUNCH process >> %log% 
 
 REM Target JSONs
 SET activityJSON=PBN4%activity%.json
@@ -380,10 +380,9 @@ SET locationJSON=PBN5%coords%.json
 
 REM TODO TEST existance of TargetJSONs
 REM This is a redundant test, but could ask here to create JSON
-IF NOT EXIST %jsnDir%\%activityJSON% GOTO NOJSON
-IF NOT EXIST %jsnDir%\%coordsJSON% GOTO NOJSON
+REM IF NOT EXIST %jsnDir%\%activityJSON% GOTO NOJSON
+REM IF NOT EXIST %jsnDir%\%coordsJSON% GOTO NOJSON
 
-IF %debug%==1 CLS
 ECHO:
 ECHO: PROCESS: PRE-LAUNCH
 ECHO:
@@ -394,9 +393,9 @@ ECHO:  - JSON    : %targetJSON%
 ECHO:  - UnitMode: %unitMode%
 ECHO:
 
-IF %_debug%==1 CALL :TLOCAL >> %log% 
-ECHO: PRESS ANY KEY to confirm these settings . . .
-PAUSE > NUL
+CALL :TLOCAL >> %log% 
+IF %_debug%==1 ECHO:db PRESS ANY KEY to confirm these settings . . .
+IF %_debug%==1 PAUSE > NUL
 ECHO:
 ECHO: Please wait while drones are loaded . . .
 GOTO :EOF
@@ -405,9 +404,9 @@ GOTO :EOF
 REM Test Bot launcher
 REM add /MIN
 REM add echo to a file .
-IF %_debug%==1 ECHO:db     ECHO Starting bot %trdOrder%%order%%borg%%matrix%%drone% >> %log% 
+ECHO:db     ECHO Starting bot %trdOrder%%order%%borg%%matrix%%drone% >> %log% 
 IF %_debug%==1 START cmd /k %pbDir%\PokeBorgUnit.cmd %order% %borg% %matrix% %drone% %unitMode% %activity% %lat% %lng%
-IF %debug%==1 START /min cmd /c %pbDir%\PokeBorgUnit.cmd %order% %borg% %matrix% %drone% %unitMode% %activity% %lat% %lng%
+IF %_debug%==0 START /min cmd /c %pbDir%\PokeBorgUnit.cmd %order% %borg% %matrix% %drone% %unitMode% %activity% %lat% %lng%
 GOTO :eof
 
 :Poke10Unit
@@ -425,8 +424,29 @@ FOR /L %%A IN (0,1,9) DO (
 REM - TODO ask to cascade windows
 GOTO :eof
 
+:LAUNCHFARM
+ECHO:db     Begin Farm process - ninja activity selected >> %log% 
+IF %debug%==2 PAUSE
+
+REM Initiate Launch Variables for Farm
+SET unitMode=1
+SET activity=ninja
+
+REM Target JSONs
+SET targetJSON=%activity%.json
+
+CALL :PRELAUNCH
+
+CALL :Poke10Unit
+ECHO: && ECHO Completed loading Drones
+
+REM go back to menu or run next matrix
+PAUSE
+GOTO rerun
+EXIT
+
 :LAUNCHGYM
-IF %_debug%==1 ECHO:db     Begin GYM process - gymstrat activity selected >> %log% 
+ECHO:db     Begin GYM process - gymstrat activity selected >> %log% 
 IF %debug%==2 PAUSE
 
 REM Initiate Launch Variables for GYM
@@ -502,7 +522,7 @@ REM TESTING JSON Ninja.JSON - extracting bot data
 REM SET sections options Ninja(PBN1,PBN2), Account(PBN3abc), Seen(PBN3b,PBN3c), Config(PBN4), Path(PBN5), Display(run display)
 IF %_debug%==1 ECHO:db     ECHO Extracting %sections% data from %targetJSON% for %trdOrder%%order%%borg%%matrix%%drone%
 IF %_debug%==1 START cmd /k %pbDir%\jsonextract.cmd %order% %borg% %matrix% %drone% %targetJSON% %sections% %newSettings%
-IF %debug%==1 START cmd /c %pbDir%\jsonextract.cmd %order% %borg% %matrix% %drone% %targetJSON% %sections% %newSettings%
+IF %_debug%==0 START cmd /c %pbDir%\jsonextract.cmd %order% %borg% %matrix% %drone% %targetJSON% %sections% %newSettings%
 GOTO :eof
 
 : JSON MERGE FUNCTIONS
@@ -510,7 +530,7 @@ GOTO :eof
 REM TESTING JSON File creator - merger
 IF %_debug%==1 ECHO:db     ECHO Creating new %targetJSON% JSON for %trdOrder%%order%%borg%%matrix%%drone%
 IF %_debug%==1 START cmd /k %pbDir%\jsonmerger.cmd %order% %borg% %matrix% %drone% %activity% %coords% %targetJSON%
-IF %debug%==1 START cmd /c %pbDir%\jsonmerger.cmd %order% %borg% %matrix% %drone% %activity% %coords% %targetJSON%
+IF %_debug%==0 START cmd /c %pbDir%\jsonmerger.cmd %order% %borg% %matrix% %drone% %activity% %coords% %targetJSON%
 GOTO :eof
 
 
@@ -980,7 +1000,7 @@ IF %_debug%==1 ECHO: --Current func    : STBORG - %1 >> %log%
 SET borg=%1
 SET myBorg=%fstOrder%-%borg%
 SET /a iBorg=%borg%*100+%iMatrix%
-SET borgDir=%collDir%\%myBorg%
+SET borgDir=%collDir%%myBorg%
 if not exist %borgDir% GOTO NOBORG
 CALL :STMATRIX 0
 GOTO :EOF

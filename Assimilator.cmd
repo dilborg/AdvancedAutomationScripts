@@ -369,7 +369,7 @@ ECHO:db     exec             :  %exec% >>%log%
 
 :Menu-Main
 :: Initialize Menu options and displays
-SET Menu-Title=PokeBorg Advanced Automation Installater
+SET Menu-Title=PokeBorg Advanced Automation Installer
 SET Menu-Description=PokeBorg Installer
 SET Menu-Prompt="Select an installation option:"
 GOTO :EOF
