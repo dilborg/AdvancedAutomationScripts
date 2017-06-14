@@ -20,7 +20,7 @@ SET "_debug=0"
 SET "situation=%~n0"
 IF %debug% EQU 1 ( CHOICE /C YN /M "Enable %situation% debug?" )
 IF %ERRORLEVEL% EQU 1 SET "_debug=%debug%"
-IF %_debug% EQU 1 ( ECHO: Debug mode activated - debug: %debug%  _debug: %_debug%   para1: %1 )
+IF %_debug% EQU 1 ( ECHO: Debug mode activated - debug: %debug%  _debug: %_debug%   para9: %9 )
 IF %_debug% EQU 1 ( CHOICE /C YN /M "Turn ECHO on?" )
 IF %ERRORLEVEL% EQU 1 ECHO ON
 
@@ -28,7 +28,7 @@ IF %ERRORLEVEL% EQU 1 ECHO ON
 REM -- Determine assigned variables 
 :ShowPassedVars
 REM TESTING parameter output
-IF %debug%==1 GOTO DB1
+IF %_debug%==0 GOTO DB1
 ECHO:db && ECHO:db TESTING Parameters
 ECHO:db myOrder	: %1
 ECHO:db order	: %2
@@ -39,6 +39,7 @@ ECHO:db matrix	: %6
 ECHO:db trdOrder	: %7
 ECHO:db drone	: %8
 ECHO:db debug	: %debug%
+ECHO:db _debug	: %_debug%
 PAUSE
 :DB1
 
@@ -104,10 +105,10 @@ IF %_debug%==1 ECHO:db -- Function:  beginLogging
 REM -- End of Directory creation, skip to here if dir are made
 Title = PokeBorg Assimilation Process . . .
 REM -- Create Log file if needed
-IF %_debug%==1 ECHO:db     Starting log : >> %log%
+IF %_debug%==1 ECHO:db     Starting log : 
 IF EXIST %log% GOTO Log_Batch
 (ECHO:
-	ECHO: PokeBorg Advanced Automation Assimilator Logs
+	ECHO: PokeBorg Advanced Automation Regenerator Logs
 	ECHO: PokeBorg VER    : %version%
 	ECHO: Current CMD     : %situation%
 	FOR /F "tokens=*" %%W IN ('VER') DO ECHO: Windows Version : %%W
@@ -116,7 +117,7 @@ IF EXIST %log% GOTO Log_Batch
 	ECHO:=========================================================
 )>> "%log%"
 CALL :T3 >> %log% 2>&1
-GOTO Start_Rejenerate
+GOTO Start_Regenerate
 
 :Log_Batch
 ECHO: -- Function:  Log_Batch >> %log%
@@ -126,16 +127,16 @@ ECHO: DATE            : %DATE%, %TIME%
 ECHO:=========================================================
 )>> "%log%"
 CALL :T3 >> %log% 2>&1
-GOTO Start_Rejenerate
+GOTO Start_Regenerate
 
-:Start_Rejenerate
+:Start_Regenerate
 :Create_Folders
-    ECHO:  
-    ECHO:   Creating folders:
+    ECHO:
+    ECHO:  Creating folders:
     ECHO:   %borgDir%
-    ECHO:   %sndOrder%: %borg%%matrix%-%borg%9 10x 
-    ECHO:   %trdOrder%: %borg%%matrix%%drone%-%borg%99 100x
-    ECHO:  
+    ECHO:    %sndOrder%: %borg%%matrix%-%borg%9 10x 
+    ECHO:     %trdOrder%: %borg%%matrix%%drone%-%borg%99 100x
+    ECHO:
 :: TEST FOR EXISTING DIR
 :Check_Borg
 if not exist %borgDir% GOTO Check_Matrix
@@ -179,8 +180,6 @@ if not exist %droneDir% GOTO Create_Borg
 ECHO:db -- Function:  Create_Borg >> %log%
 CALL :T2 >> %log% 2>&1
 
-IF %_debug% EQU 1 CALL :TSTART
-
 cd %myPogoDir%
 ECHO:
 ECHO: %fstOrder% and %sndOrder% directories will be created in this folder:  
@@ -190,14 +189,15 @@ ECHO:  Is this location correct?
 ECHO: 
 choice /C YN /M ": Click Y to Generate directories, or N to return to Command Console:"
 IF %ERRORLEVEL%==2 GOTO DONE
-ECHO:
+
 mkdir %myBorg% >> %log% 2>&1
-ECHO: Created %myBorg% Drone directory || ECHO: Problem creating %myBorg%
+ECHO: & ECHO: Creating %myBorg% Drone directory >> %log% 2>&1
+ECHO: & ECHO: Created %myBorg% Drone directory || ECHO: Problem creating %myBorg%
 
 :Create_Matrix
 cd %borgDir%
-CALL :T3 >> %log% 2>&1
 FOR /L %%A IN (0,1,9) DO (
+  ECHO: Creating %myBorg%\%sndOrder%-%borg%%%A Drone directory >> %log% 2>&1
   mkdir %sndOrder%-%borg%%%A >> %log% 2>&1
   ECHO: Created %myBorg%\%sndOrder%-%borg%%%A
     FOR /L %%B IN (0,1,9) DO call :Maker %%A %%B
@@ -207,7 +207,7 @@ cd %myPogoDir%
 
 start %borgDir%
 ECHO:
-ECHO: Finished creating %borgDir% directory structure.
+ECHO: Finished creating %MyBorg% directory structure.
 ECHO:  Created 10x sub-%sndOrder% directories
 ECHO:   Created 100X sub-%trdOrder% directories
 ECHO:
@@ -215,13 +215,13 @@ GOTO DONE
 
 :MAKER
 :: Sub helper function for creating Drone directory and create Drone starter CMD
-ECHO: myDrone : %myDrone% >> %log% 2>&1
 set nMatrix=%1
 set nDrone=%2
 set myMatrix=%sndOrder%-%borg%%nMatrix%
 set myDrone=%trdOrder%-%borg%%nMatrix%%nDrone%
 set matrixDir=%borgDir%\%myMatrix%
 set droneDir=%matrixDir%\%myDrone%
+ECHO: Creating myDrone : %myDrone% - droneDir : %droneDir% >> %log% 2>&1
 CD %matrixDir%
 mkdir %droneDir% >> %log% 2>&1
 :: Create Drone starter CMD -- start-%myDrone%.cmd 
@@ -336,11 +336,11 @@ ECHO:db     Parameter8: %8
 GOTO :eof
 
 :T2
-ECHO: & ECHO:ECHO TESTING Assignments
-ECHO:db    *order   : %order% / iOrder  : %iOrder% / myOrder : %myOrder%
-ECHO:db    *borg    : %borg% / iBorg   : %iBorg% / myBorg  : %myBorg%
-ECHO:db    *matrix  : %borg% / iMatrix : %iMatrix% / myMatrix : %myMatrix%
-ECHO:db    *drone   : %borg% / iDrone  : %iDrone% / myDrone : %myDrone%
+ECHO: & ECHO:TESTING Assignments
+ECHO:db    *order   : %order% 	iOrder  : %iOrder% 	myOrder  : %myOrder%
+ECHO:db    *borg    : %borg% 	iBorg   : %iBorg% 	myBorg   : %myBorg%
+ECHO:db    *matrix  : %matrix% 	iMatrix : %iMatrix%	myMatrix : %myMatrix%
+ECHO:db    *drone   : %drone% 	iDrone  : %iDrone% 	myDrone  : %myDrone%
 GOTO :eof
 
 :T3
@@ -370,8 +370,9 @@ PAUSE
 GOTO :eof
 
 :DONE
-ECHO: Pokeborg Regenerator Summary : 
-PAUSE
+ECHO: & ECHO: Pokeborg Regenerator Complete
+ECHO: & ECHO: Press any key to return to the PokeBorg Command Console
+PAUSE > NUL
 
 :end
 REM -- Tidy up a few things
@@ -382,9 +383,9 @@ IF %_debug% EQU 1 (
   SET _
  ) >> %log% 2>&1
 IF %_debug% EQU 1 START /B /I notepad.exe %log%
-IF %_debug% EQU 1 ECHO: && ECHO: %situation% ended as exptected.
-set /p "=This window will self-destruct in 10 seconds" < nul
-for /l %%a in (1, 1, 12) do (
+IF %_debug% EQU 1 ECHO: && ECHO: %situation% ended as expected.
+set /p "=This window will self-destruct in 3 seconds" < nul
+for /l %%a in (1, 1, 5) do (
 	set /p "=." < nul
 	timeout /t 1 > nul
 )

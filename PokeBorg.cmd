@@ -45,7 +45,7 @@ IF NOT EXIST "PokeBorg\PokeBorg-settings.cmd" GOTO NEWPOKEBORG
 :initSettings
 REM -- Initialize the persistent variables from the storage
 CALL "PokeBorg\PokeBorg-settings.cmd"
-PAUSE
+
 :initMain
 mode con: cols=%cols% lines=%lines%
 COLOR %colour%
@@ -1021,10 +1021,10 @@ GOTO NEWPOKEBORG
 :NOBORG
 REM -- Detected the BORG directory does not exist ask to create new Borg
 IF %_debug%==1 ECHO: --Current func    : NOBORG - %myBorg% >> %log% 
+ECHO: & ECHO: Selection: %myBorg% 
+ECHO: & ECHO: Could not find directory - %myBorg%
 ECHO: 
-ECHO: Selection: %myBorg% 
-ECHO: Could not find directory - %myBorg%
-choice /C YN /M "-Do you want the directories created?"
+choice /C YN /M ": Do you want the directories created?"
 IF %ERRORLEVEL%==2 GOTO PBN
 IF %ERRORLEVEL%==1 GOTO NEWBORG
 EXIT /B %ERRORLEVEL%
@@ -1081,20 +1081,20 @@ ECHO: The PokeBorg Program Installer was downloaded.
 GOTO :EOF
 
 :NEWBORG
-REM -- Helper function which calls the BORG Directory Creator
+REM -- Helper function which calls the BORG Directory Generator
 IF %_debug%==1 ECHO: --Current func    : NEWPOKEBORG >> %log% 
-ECHO:     BORG Directory Creator:
-ECHO: This function will create the following directories:
+ECHO: & ECHO:     BORG Directory Generator:
+ECHO: & ECHO: This function will generate the following directories:
 ECHO:   -- %myPogoDir%  %TAB%%TAB%- already exists
 ECHO:     -- %myBorg%  %TAB%%TAB%%TAB%%TAB%%TAB%sub-directory
 ECHO:       -- 10x %sndOrder% %TAB%%TAB%%TAB%subdirecties to %myBorg%
 ECHO:         -- 10x %trdOrder% %TAB%%TAB%subdirecties to %sndOrder%
 ECHO:
-ECHO: A window will appear that will initiate the directory creation.
+ECHO: A window will appear that will initiate the directory generator.
 IF %_debug%==1 ECHO:db%TAB%myPogoDir%TAB%: %myPogoDir% >> %log%
 IF %_debug%==1 ECHO:db%TAB%myBorg%TAB%: %myBorg%  >> %log%
 PAUSE
-START cmd /c %pbDir%\PokeBorg-Rejenerator.cmd %myOrder% %order% %fstOrder% %borg% %sndOrder% %matrix% %trdOrder% %drone%
+START cmd /k %pbDir%\PokeBorg-Regenerator.cmd %myOrder% %order% %fstOrder% %borg% %sndOrder% %matrix% %trdOrder% %drone%
 GOTO PBN
 
 :NEWMATRIX
@@ -1130,12 +1130,11 @@ PAUSE
 GOTO :EOF
 
 REM END of activities
-PAUSE
-GOTO EOF
-
-:: -------------------------------
+::-----------------------------------------------------------
+:: helper functions follow below here
+::-----------------------------------------------------------
 :: ERROR RESPONSE FUNCTIONS
-:: -------------------------------
+::-----------------------------------------------------------
 
 :SE1
 REM go back to menu or run next matrix ?
@@ -1217,11 +1216,11 @@ ECHO:db     Parameter8: %8
 GOTO :eof
 
 :T2
-ECHO: && ECHO:ECHO TESTING Assignments
-ECHO:db    *order   : %order% / iOrder  : %iOrder% / myOrder : %myOrder%
-ECHO:db    *borg    : %borg% / iBorg   : %iBorg% / myBorg  : %myBorg%
-ECHO:db    *matrix  : %borg% / iMatrix : %iMatrix% / myMatrix : %myMatrix%
-ECHO:db    *drone   : %borg% / iDrone  : %iDrone% / myDrone : %myDrone%
+ECHO: & ECHO:TESTING Assignments
+ECHO:db    *order   : %order% 	iOrder  : %iOrder% 	myOrder  : %myOrder%
+ECHO:db    *borg    : %borg% 	iBorg   : %iBorg% 	myBorg   : %myBorg%
+ECHO:db    *matrix  : %matrix% 	iMatrix : %iMatrix%	myMatrix : %myMatrix%
+ECHO:db    *drone   : %drone% 	iDrone  : %iDrone% 	myDrone  : %myDrone%
 GOTO :eof
 
 :T3

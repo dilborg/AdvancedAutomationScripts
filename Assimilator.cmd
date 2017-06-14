@@ -160,7 +160,7 @@ IF %_debug%==1 ECHO:db -- Function:  beginLogging
 REM -- End of Directory creation, skip to here if dir are made
 Title = PokeBorg Assimilation Process . . .
 REM -- Create Log file if needed
-IF %_debug%==1 ECHO:db     Starting log : >> %log%
+IF %_debug%==1 ECHO:db     Starting log :
 IF EXIST %log% GOTO Log_Batch
 (ECHO:
 	ECHO: PokeBorg Advanced Automation Assimilator Logs
@@ -530,7 +530,7 @@ IF %_debug%==2 IF %ERRORLEVEL%==1 ECHO ON
 goto :eof
 
 :T1
-ECHO: && ECHO:TESTING Parameter and Escape Values
+ECHO: & ECHO:TESTING Parameter and Escape Values
 ECHO:db     %%~0   : %~0    -   %%~1   : %~1
 ECHO:db     %%~f0  : %~f0   -   %%~f1  : %~f1
 ECHO:db     %%~d0  : %~d0   -   %%~d1  : %~d1
@@ -555,15 +555,15 @@ ECHO:db     Parameter8: %8
 GOTO :eof
 
 :T2
-ECHO: && ECHO:ECHO TESTING Assignments
-ECHO:db    *order   : %order% / iOrder  : %iOrder% / myOrder : %myOrder%
-ECHO:db    *borg    : %borg% / iBorg   : %iBorg% / myBorg  : %myBorg%
-ECHO:db    *matrix  : %borg% / iMatrix : %iMatrix% / myMatrix : %myMatrix%
-ECHO:db    *drone   : %borg% / iDrone  : %iDrone% / myDrone : %myDrone%
+ECHO: & ECHO:TESTING Assignments
+ECHO:db    *order   : %order% 	iOrder  : %iOrder% 	myOrder  : %myOrder%
+ECHO:db    *borg    : %borg% 	iBorg   : %iBorg% 	myBorg   : %myBorg%
+ECHO:db    *matrix  : %matrix% 	iMatrix : %iMatrix%	myMatrix : %myMatrix%
+ECHO:db    *drone   : %drone% 	iDrone  : %iDrone% 	myDrone  : %myDrone%
 GOTO :eof
 
 :T3
-ECHO: && ECHO:TESTING Directories
+ECHO: & ECHO:TESTING Directories
 ECHO:db     Pogo       : %myPogoDir%
 ECHO:db     Collective : %collDir%
 ECHO:db     Borg       : %borgDir%
@@ -575,7 +575,7 @@ ECHO:db     PBN-JSON   : %jsnDir%
 GOTO :eof
 
 :T4
-ECHO: && ECHO:TESTING JSON file values
+ECHO: & ECHO:TESTING JSON file values
 ECHO:db     currentJSON %currentJSON%
 ECHO:db     droneJSON %droneJSON%
 ECHO:db     targetJSON %targetJSON%
@@ -583,7 +583,7 @@ ECHO:db     destJSON %destJSON%
 GOTO :eof
 
 :TLOCAL
-ECHO: && ECHO:TESTING Local Settings 
+ECHO: & ECHO:TESTING Local Settings 
 REM Local init
 ECHO:db     Version     : %version%
 ECHO:db     Current CMD : %situation%
@@ -659,5 +659,5 @@ for /l %%a in (1, 1, 7) do (
 	set /p "=." < nul
 	timeout /t 1 > nul
 )
-endlocal
+ENDLOCAL
 GOTO :EOF

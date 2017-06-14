@@ -547,7 +547,7 @@ EXIT
 :LAUNCH
     ECHO A new Command window will appear
     ECHO Please wait . . . 
-    START cmd /c PokeBorg.cmd
+    START cmd /c %borgDir%\PokeBorg.cmd
     EXIT
 
 :No6
@@ -579,18 +579,11 @@ GOTO :eof
 
 :T2
 ECHO: && ECHO ECHO TESTING Assignments
-ECHO order   : %order%
-    ECHO iOrder  : %iOrder%
-    ECHO myOrder : %myOrder%
-ECHO borg    : %borg%
-    ECHO iBorg   : %iBorg%
-    ECHO myBorg  : %myBorg%
-ECHO matrix  : %matrix%
-    ECHO iMatrix : %iMatrix%
-    ECHO myMatrix : %myMatrix%
-ECHO drone   : %drone%
-    ECHO iDrone  : %iDrone%
-    ECHO myDrone : %myDrone%
+ECHO: & ECHO:TESTING Assignments
+ECHO:db    *order   : %order% 	/ iOrder  : %iOrder% 	/ myOrder  : %myOrder%
+ECHO:db    *borg    : %borg% 	/ iBorg   : %iBorg% 	/ myBorg   : %myBorg%
+ECHO:db    *matrix  : %matrix% 	/ iMatrix : %iMatrix% 	/ myMatrix : %myMatrix%
+ECHO:db    *drone   : %drone% 	/ iDrone  : %iDrone% 	/ myDrone  : %myDrone%
 GOTO :eof
 
 :T3
